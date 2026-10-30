@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prythian Codex</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A spoiler-safe fan companion to Sarah J. Maas's A Court of Thorns and Roses series: books, characters, courts, timeline, Velaris, recaps, family tree and connections map.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky command bar (title + global search + tabs) over a single content column; cards in auto-fill grids.
+   Theme: Night Court. Moonlit lavender parchment by day, starlit indigo by night, thorn-rose and starlight-gold accents. */
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#efeaf3; --surface:#fbf8fc; --sunk:#e4dcea; --fg:#1d1730; --muted:#5e5472; --line:#d2c7dc;
+  --accent:#4a2f7c; --accent-ink:#ffffff; --bronze:#9b3f52; --gold:#94701f;
+  --good:#2f7a52; --grey:#93650f; --bad:#a3322b;
+  --fam:#94701f; --love:#b0346a; --friend:#2f7a52; --foe:#a3322b; --bond:#4a2f7c; --ally:#6a5aa8;
+  --display:"Cinzel", "Trajan Pro", Georgia, serif;
+  --body:"Alegreya Sans", "Gill Sans", "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --r:6px; --stars:none;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d0b17; --surface:#161326; --sunk:#211c36; --fg:#ece6f6; --muted:#a69dbd; --line:#2f2847;
+  --accent:#b9a3f2; --accent-ink:#130f22; --bronze:#ec9aab; --gold:#e3c27a;
+  --good:#6cc596; --grey:#e3b552; --bad:#f07c74;
+  --fam:#e3c27a; --love:#f083b4; --friend:#6cc596; --foe:#f07c74; --bond:#b9a3f2; --ally:#9d8ef0;
+  --stars:radial-gradient(1px 1px at 12% 22%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 68% 38%,#fff6 50%,transparent 51%),radial-gradient(1.5px 1.5px at 84% 12%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 33% 72%,#fff5 50%,transparent 51%),radial-gradient(1px 1px at 92% 64%,#fff6 50%,transparent 51%),radial-gradient(1.5px 1.5px at 47% 8%,#fff7 50%,transparent 51%);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0b17; --surface:#161326; --sunk:#211c36; --fg:#ece6f6; --muted:#a69dbd; --line:#2f2847;
+  --accent:#b9a3f2; --accent-ink:#130f22; --bronze:#ec9aab; --gold:#e3c27a;
+  --good:#6cc596; --grey:#e3b552; --bad:#f07c74;
+  --fam:#e3c27a; --love:#f083b4; --friend:#6cc596; --foe:#f07c74; --bond:#b9a3f2; --ally:#9d8ef0;
+  --stars:radial-gradient(1px 1px at 12% 22%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 68% 38%,#fff6 50%,transparent 51%),radial-gradient(1.5px 1.5px at 84% 12%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 33% 72%,#fff5 50%,transparent 51%),radial-gradient(1px 1px at 92% 64%,#fff6 50%,transparent 51%),radial-gradient(1.5px 1.5px at 47% 8%,#fff7 50%,transparent 51%);
+  color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+img{max-width:100%}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--stars),var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{padding-block:12px 0;display:grid;gap:10px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,3.6vw,1.85rem);margin:0;letter-spacing:.06em;line-height:1.1}
+.brand h1 .thorn{color:var(--bronze)}
+.brand small{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.gsearch{position:relative}
+.gsearch input{width:100%;font:inherit;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--fg)}
+.gsearch svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted)}
+.gres{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);max-height:60vh;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:40}
+.gres button{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;padding:9px 12px;border:0;background:none;color:var(--fg);font:inherit;cursor:pointer;border-bottom:1px solid var(--line)}
+.gres button:hover,.gres button:focus-visible{background:var(--sunk);outline:none}
+.gres .k{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bronze);min-width:74px}
+.gres .s{color:var(--muted);font-size:.86rem}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{font:inherit;font-weight:500;border:0;background:none;color:var(--muted);padding:10px 12px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+main .wrap{padding-block:22px 60px}
+h2{font-family:var(--display);font-weight:500;font-size:1.6rem;margin:0 0 4px;letter-spacing:.03em;text-wrap:balance}
+h3{font-family:var(--display);font-weight:500;font-size:1.18rem;margin:0;letter-spacing:.02em;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 18px;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);margin:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.controls input[type=search],.controls select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--fg);min-width:0}
+.controls input[type=search]{flex:1 1 220px}
+.chip{font:inherit;font-size:.9rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip:focus-visible,.card:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+.grid.wide{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+.group-h{display:flex;align-items:baseline;gap:10px;margin:26px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.group-h:first-child{margin-top:0}
+.group-h span{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0;scroll-margin-top:180px;transition:box-shadow .3s}
+.card.flash{box-shadow:0 0 0 3px var(--accent)}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.card .aka{color:var(--muted);font-size:.88rem;font-style:italic}
+dl.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0 0;font-size:.93rem}
+dl.kv dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+dl.kv dd{margin:0;min-width:0}
+.pill{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.p-good{color:var(--good)} .p-grey{color:var(--grey)} .p-bad{color:var(--bad)}
+.p-dead{color:var(--muted)} .p-mark{color:var(--gold)}
+.pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.death{margin-top:10px;padding:8px 10px;background:var(--sunk);border-radius:var(--r);font-size:.9rem}
+.agenda{margin-top:10px;font-size:.93rem}
+.agenda b,.lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;display:block}
+a.lnk,button.lnk{color:var(--accent);background:none;border:0;padding:0;font:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.swatch{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line)}
+.books{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:10px}
+.links{margin-top:10px;font-size:.9rem}
+.note{font-size:.9rem;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r);padding:10px 12px;margin:0 0 18px;max-width:80ch}
+/* book guide */
+.order{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 22px;padding:0;list-style:none;counter-reset:o}
+.order li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:.9rem;position:relative}
+.order li b{display:block;font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.25}
+.order li .n{font-family:var(--mono);font-size:.66rem;color:var(--bronze);letter-spacing:.08em;text-transform:uppercase}
+.order li.opt{border-style:dashed}
+.order li.soon{border-style:dashed;opacity:.85}
+.bookcard{display:grid;grid-template-columns:64px 1fr;gap:14px}
+.spine{border-radius:4px;min-height:96px;display:flex;align-items:flex-end;justify-content:center;padding:12px 0;font-family:var(--display);font-size:1rem;letter-spacing:.14em;color:#fff;line-height:1;box-shadow:inset -6px 0 0 rgba(0,0,0,.18)}
+.spine span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.bk-plot{margin:8px 0 0;font-size:.95rem}
+.bk-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin-top:12px}
+.buybtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;font:inherit;font-weight:500;font-size:.9rem;line-height:1.2;cursor:pointer;border:1px solid var(--accent);text-decoration:none;color:var(--accent-ink);background:var(--accent);border-radius:var(--r);padding:8px 14px;min-height:40px}
+.buybtn:hover{filter:brightness(1.1)}
+.buybtn svg{width:16px;height:16px}
+.buybtn.ghost{background:none;color:var(--accent);border-color:var(--line)}
+.castlist{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.92rem;margin-top:4px}
+/* courts */
+.court-h{display:flex;gap:10px;align-items:center}
+.court-dot{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:2px solid var(--line)}
+.pos{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:3px;font-size:.92rem}
+.pos li{display:grid;grid-template-columns:118px 1fr;gap:8px}
+.pos li span:first-child{color:var(--muted);font-size:.85rem}
+.war{margin-top:10px;padding:10px 12px;border-left:3px solid var(--bronze);background:var(--sunk);border-radius:0 var(--r) var(--r) 0;font-size:.92rem}
+/* world */
+.sec-h{margin:34px 0 10px}
+.sec-h:first-child{margin-top:0}
+.eras{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.era{border-left:3px solid var(--accent);padding:6px 0 6px 12px;font-size:.93rem;scroll-margin-top:180px}
+.era h3{font-size:1.02rem}
+.era .when{font-family:var(--mono);font-size:.68rem;color:var(--bronze);letter-spacing:.06em;text-transform:uppercase}
+.era.flash{background:var(--sunk)}
+ol.tl{list-style:none;margin:0;padding:0;position:relative}
+ol.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+ol.tl li{position:relative;padding:0 0 16px 30px;scroll-margin-top:180px}
+ol.tl li::before{content:"";position:absolute;left:1px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+ol.tl li.bk::before{background:var(--accent)}
+ol.tl li.flash{background:var(--sunk);border-radius:var(--r)}
+ol.tl .when{font-family:var(--mono);font-size:.7rem;color:var(--bronze);letter-spacing:.06em;text-transform:uppercase}
+ol.tl b{display:block;font-weight:700}
+ol.tl p{margin:2px 0 0;color:var(--muted);font-size:.93rem;max-width:72ch}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.mapwrap{grid-template-columns:1fr}}
+.mapsvg{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mapsvg svg{display:block;width:100%;height:auto}
+.mapsvg .land{fill:var(--sunk);stroke:var(--line);stroke-width:1.5}
+.mapsvg .sea{fill:var(--bg)}
+.mapsvg .reg{stroke:var(--surface);stroke-width:2;cursor:pointer;transition:opacity .2s}
+.mapsvg .reg:hover,.mapsvg .reg.on{opacity:1!important;stroke:var(--fg)}
+.mapsvg text{font-family:var(--display);font-size:13px;fill:var(--fg);pointer-events:none}
+.mapsvg text.sm{font-family:var(--body);font-size:11px;fill:var(--muted);font-style:italic}
+.mapsvg .river{fill:none;stroke:var(--accent);stroke-width:5;opacity:.55}
+.mapsvg .pin{cursor:pointer}
+.mapsvg .pin circle{fill:var(--bronze);stroke:var(--surface);stroke-width:2}
+.mapsvg .pin.on circle{fill:var(--accent);r:9}
+.places{display:grid;gap:8px}
+.place{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:.92rem;scroll-margin-top:180px;cursor:pointer;text-align:left;font:inherit;color:var(--fg);width:100%}
+.place b{font-family:var(--display);font-weight:500}
+.place.flash,.place.on{box-shadow:0 0 0 2px var(--accent)}
+.place .n{font-family:var(--mono);font-size:.68rem;color:var(--bronze);margin-right:6px}
+/* recaps */
+.recap{max-width:820px}
+.recap h3{font-size:1.35rem}
+.recap h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bronze);margin:18px 0 6px;font-weight:500}
+.recap ul{margin:0;padding-left:20px;display:grid;gap:5px}
+.recap p{margin:0 0 8px}
+.remember{margin-top:16px;padding:12px 14px;border:1px solid var(--accent);border-radius:var(--r);background:var(--sunk)}
+.remember h4{margin-top:0;color:var(--accent)}
+/* graph views */
+.split{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:auto;min-width:0;max-height:78vh}
+.stage svg{display:block}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;position:sticky;top:190px}
+.panel ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px;font-size:.93rem}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted);margin-bottom:12px}
+.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:5px;border-radius:2px}
+svg text{font-family:var(--body);fill:var(--fg)}
+.node{cursor:pointer}
+.node rect,.node circle{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.node.focus rect,.node.focus circle{stroke:var(--accent);stroke-width:3}
+.node.near rect,.node.near circle{stroke:var(--bronze);stroke-width:2}
+.node.dim,.edge.dim{opacity:.13}
+.node.dead text{fill:var(--muted)}
+.node:focus-visible rect{stroke:var(--accent);stroke-width:3}
+.edge{fill:none;stroke-width:1.8;transition:opacity .2s}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+button,select,input,.node{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tabicon,.ts,.sheet-close{display:none}
+/* ---- Spoiler shield ---- */
+.spbtn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.85rem;font-weight:500;color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer;align-self:center}
+.spbtn:hover{border-color:var(--accent)}
+.spbtn svg{width:17px;height:17px;flex-shrink:0}
+.sp-hidden{filter:blur(6px);cursor:pointer;user-select:none;-webkit-user-select:none;transition:filter .2s}
+.sp-hidden *{pointer-events:none}
+.sp-strip{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.88rem;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r);padding:9px 12px;background:var(--surface)}
+.sp-strip b{color:var(--fg);font-weight:500}
+.sp-note{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:12px;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:var(--r);background:var(--surface);font-size:.93rem}
+.sp-note .chip{min-height:40px}
+main .wrap.sp-wrap{padding-bottom:0}
+main .wrap.sp-wrap + .wrap{padding-top:14px}
+dialog.spd{border:1px solid var(--line);border-radius:12px;padding:0;max-width:480px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:var(--surface);color:var(--fg);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog.spd::backdrop{background:rgba(10,8,22,.65)}
+.spd .in{padding:22px 22px 18px}
+.spd h2{margin:6px 0 8px}
+.spd p{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+.spd .opts{display:grid;gap:7px}
+.spd .opts button{text-align:left;font:inherit;cursor:pointer;background:var(--bg);color:var(--fg);border:1.5px solid var(--line);border-radius:var(--r);padding:9px 14px}
+.spd .opts button:hover,.spd .opts button.cur{border-color:var(--accent)}
+.spd .opts b{display:block;font-weight:700}
+.spd .opts span{display:block;font-size:.84rem;color:var(--muted)}
+.spd .fine{margin:12px 0 0;font-size:.8rem}
+/* ---- The Reader's Atlas extras ---- */
+.atlas{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;align-self:center}
+.atlas:hover{color:var(--fg);border-color:var(--accent)}
+.atlas svg{width:16px;height:15px;flex-shrink:0}
+.atlas path{fill:var(--gold)}
+.atlas .moon-book{fill:var(--surface)}
+footer.site{border-top:1px solid var(--line);background:var(--stars),var(--surface);margin-top:10px}
+footer.site .wrap{padding-block:26px 34px;display:grid;gap:14px}
+footer.site h2{font-size:1.3rem}
+.buyrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.buy{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--fg);text-decoration:none;min-height:44px}
+.buy:hover{border-color:var(--accent)}
+.buy b{font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.25}
+.buy span{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.foot-actions{display:flex;flex-wrap:wrap;gap:10px}
+.socials{display:flex;flex-wrap:wrap;gap:10px}
+.kofi,.home,.social{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:var(--r);font-weight:500;text-decoration:none}
+.kofi{background:var(--accent);color:var(--accent-ink)}
+.kofi:hover{filter:brightness(1.1)}
+.home,.social{border:1px solid var(--line);color:var(--fg)}
+.home:hover,.social:hover{border-color:var(--accent)}
+.kofi svg,.home svg,.social svg{width:18px;height:18px;flex-shrink:0}
+.fine{margin:0;color:var(--muted);font-size:.86rem;max-width:80ch}
+.fine a{color:var(--accent)}
+/* ---- back to top ---- */
+.totop{position:fixed;z-index:24;right:max(20px,calc(env(safe-area-inset-right,0px) + 16px));bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.85rem;font-weight:500;padding:10px 14px;min-height:44px;border-radius:999px;
+  border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.totop:hover{filter:brightness(1.1)}
+.totop svg{width:18px;height:18px}
+/* ---- phone ---- */
+@media (max-width:700px){
+  .brand small{display:none}
+  .brand h1{font-size:1.2rem}
+  .bar .wrap{padding-block:10px;gap:8px}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);border-top:1px solid var(--line);
+    padding:4px max(2px,env(safe-area-inset-right,0px)) calc(4px + env(safe-area-inset-bottom,0px)) max(2px,env(safe-area-inset-left,0px));gap:0;overflow:visible}
+  nav.tabs button{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;min-height:52px;font-size:.62rem;border-bottom:0}
+  nav.tabs button[aria-selected="true"]{color:var(--accent)}
+  .tabicon{display:block;width:22px;height:22px}
+  .tl-l{display:none} .ts{display:block}
+  main .wrap{padding-block:16px 24px}
+  .card,.era,ol.tl li,.place{scroll-margin-top:130px}
+  .grid,.grid.wide{grid-template-columns:1fr}
+  h2{font-size:1.35rem}
+  .chip{min-height:40px}
+  .controls select{flex:1 1 auto;min-height:40px}
+  .count{width:100%;margin-left:0}
+  .bookcard{grid-template-columns:44px 1fr;gap:12px}
+  .spine{min-height:80px;font-size:.85rem}
+  .pos li{grid-template-columns:96px 1fr}
+  .panel{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:22;max-height:42vh;overflow:auto;
+    border-radius:14px 14px 0 0;border-bottom:0;box-shadow:0 -8px 28px rgba(0,0,0,.25);
+    padding:14px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  .panel.idle{display:none}
+  .sheet-close{display:block;position:absolute;top:10px;right:max(12px,env(safe-area-inset-right,0px));font:inherit;font-size:.85rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sunk);color:var(--fg)}
+  .legend{gap:8px 12px;font-size:.8rem}
+  .spbtn span{display:none}.spbtn{padding:6px 9px}
+  .atlas span{display:none}.atlas{padding:5px 8px}
+  .totop{bottom:calc(74px + env(safe-area-inset-bottom,0px));right:max(14px,calc(env(safe-area-inset-right,0px) + 10px));padding:10px 12px}
+  .totop span{display:none}
+  footer.site .wrap{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="brand"><h1>Prythian <span class="thorn">Codex</span></h1><small>A Court of Thorns and Roses · Books 1–6</small><a class="atlas" href="https://readersatlas.com" aria-label="The Reader's Atlas: more character guides"><svg viewBox="0 0 140 130" aria-hidden="true"><path d="M28 60 A46 46 0 1 0 112 60 A38 38 0 1 1 28 60 Z"/><path class="moon-book" d="M36 74 C48 68 60 69 70 76 C80 69 92 68 104 74 L104 100 C92 94 80 95 70 102 C60 95 48 94 36 100 Z"/><path d="M70 4 L75 15 L86 20 L75 25 L70 36 L65 25 L54 20 L65 15 Z"/></svg><span>The Reader's Atlas</span></a><button class="spbtn" id="sp-open" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 4l16 16"/></svg><span>Spoilers</span></button></div>
+    <div class="gsearch">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="gq" type="search" placeholder="Search everything: characters, courts, places, events…" autocomplete="off" aria-label="Search everything">
+      <div class="gres" id="gres" hidden></div>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs"></nav>
+  </div>
+</header>
+
+<button class="totop" id="totop" type="button" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span>Back to top</span></button>
+<main><div class="wrap sp-wrap"><div class="sp-strip" id="sp-strip"></div></div><div class="wrap" id="view"></div></main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">The A Court of Thorns and Roses series</p>
+      <h2>Read the books</h2>
+    </div>
+    <div class="buyrow" id="buyrow"></div>
+    <div class="foot-actions">
+      <a class="kofi" href="https://ko-fi.com/readersatlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4v1.5M11.5 3v2.5"/></svg>Buy me a coffee</a>
+      <div class="socials"><a class="social" href="https://www.instagram.com/readers.atlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@readers.atlas</a>
+      <a class="social" href="https://www.tiktok.com/@readers.atlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.3 4.6 5 5"/></svg>TikTok</a></div>
+      <a class="home" href="https://readersatlas.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>More guides at The Reader's Atlas</a>
+    </div>
+    <p class="fine">Fan-made guide, not affiliated with Sarah J. Maas or Bloomsbury Publishing. All characters and worlds belong to their creators.</p>
+    <p class="fine">Some links earn me a small commission at no cost to you.</p>
+    <p class="fine">Part of <a href="https://readersatlas.com">The Reader's Atlas</a> · <a href="https://www.instagram.com/readers.atlas" target="_blank" rel="noopener">@readers.atlas</a> on Instagram · <a href="https://www.tiktok.com/@readers.atlas" target="_blank" rel="noopener">@readers.atlas</a> on TikTok · <a href="https://ko-fi.com/readersatlas" target="_blank" rel="noopener">Ko-fi</a></p>
+  </div>
+<dialog class="spd" id="spd" aria-labelledby="spd-t">
+  <div class="in">
+    <p class="eyebrow">Spoiler warning</p>
+    <h2 id="spd-t">How far have you read?</h2>
+    <p>This codex covers every book, and Prythian is full of twists. I'll blur anything you haven't reached yet. Tap a blurred item to peek, or change this any time with the eye button at the top.</p>
+    <div class="opts" id="spd-opts">
+      <button type="button" data-lv="0"><b>I'm reading A Court of Thorns and Roses</b><span>Hide twists, deaths and everything after book 1</span></button>
+      <button type="button" data-lv="1"><b>I've finished ACOTAR</b><span>Hide A Court of Mist and Fury twists and later</span></button>
+      <button type="button" data-lv="2"><b>I've finished ACOMAF</b><span>Hide A Court of Wings and Ruin twists and later</span></button>
+      <button type="button" data-lv="3"><b>I've finished ACOWAR</b><span>Hide A Court of Frost and Starlight and later</span></button>
+      <button type="button" data-lv="4"><b>I've finished ACOFAS</b><span>Hide A Court of Silver Flames and later</span></button>
+      <button type="button" data-lv="5"><b>I've finished ACOSF</b><span>Hide A Court of Splintered Harmony</span></button>
+      <button type="button" data-lv="6"><b>I've finished ACOSH, or don't mind spoilers</b><span>Show everything</span></button>
+    </div>
+    <p class="fine">Your choice is remembered on this device.</p>
+  </div>
+</dialog>
+</footer>
+
+<script>
+/* ============================================================
+   DATA
+   Book codes: T ACOTAR · M ACOMAF · W ACOWAR · F ACOFAS · S ACOSF · H ACOSH
+   ============================================================ */
+const BOOKS={T:"ACOTAR",M:"ACOMAF",W:"ACOWAR",F:"ACOFAS",S:"ACOSF",H:"ACOSH"};
+const BIDX={T:0,M:1,W:2,F:3,S:4,H:5};
+const COURTCOL={night:"#2c2457",spring:"#4f9a5a",summer:"#2b8db0",autumn:"#c4612a",winter:"#8fb7d6",day:"#d9a92e",dawn:"#e08aa0",hybern:"#6e2b2b",human:"#8b7b63",continent:"#5f6c8a",prison:"#3f3f46",other:"#9a7fb8"};
+
+const BOOKLIST=[
+ {c:"T",n:"1",title:"A Court of Thorns and Roses",abbr:"ACOTAR",year:2015,pov:"Feyre",col:"#7a1f2b",
+  plot:"Nineteen-year-old Feyre keeps her poor family alive by hunting near the Wall. When she kills a wolf in the woods, a beast-like faerie arrives demanding a life for a life and carries her north into Prythian, to the Spring Court. As she warms to her captor, Tamlin, she learns a curse is creeping across the faerie lands, and only she might stop it.",
+  cast:["feyre","tamlin","lucien","rhys","amarantha","nesta","elain","alis"]},
+ {c:"M",n:"2",title:"A Court of Mist and Fury",abbr:"ACOMAF",year:2016,pov:"Feyre",col:"#2c2457",
+  plot:"Feyre survived Under the Mountain but came home broken, and the Spring Court is starting to feel like a cage. A bargain she struck with Rhysand, High Lord of the Night Court, pulls her into a court she was told was evil, and into a fight against a king across the sea who wants to tear down the Wall.",
+  cast:["feyre","rhys","cassian","azriel","mor","amren","tamlin","hybern"]},
+ {c:"W",n:"3",title:"A Court of Wings and Ruin",abbr:"ACOWAR",year:2017,pov:"Feyre (with a little Rhysand)",col:"#8a2f1e",
+  plot:"Feyre is back at the Spring Court playing a dangerous double game while war with Hybern closes in. To survive, Prythian's High Lords, who mostly hate each other, have to stand together, and Feyre must decide who she can trust with the people she loves.",
+  cast:["feyre","rhys","nesta","elain","lucien","tamlin","hybern","amren","jurian"]},
+ {c:"F",n:"3.5",title:"A Court of Frost and Starlight",abbr:"ACOFAS",year:2018,pov:"Feyre, Rhysand, Cassian and others",col:"#4f6f9a",
+  plot:"A short bridge story set at the first Winter Solstice after the war. Velaris is rebuilding, the Inner Circle tries to celebrate, and old wounds (especially Nesta's) are not healing on their own. Now officially numbered book 4 by the publisher.",
+  cast:["feyre","rhys","cassian","nesta","elain","azriel","mor","tamlin"]},
+ {c:"S",n:"4",title:"A Court of Silver Flames",abbr:"ACOSF",year:2021,pov:"Nesta and Cassian",col:"#5e6672",
+  plot:"Nesta Archeron is drinking and burning her way through Velaris, refusing to face what the war did to her. Sent to the House of Wind to train with Cassian and work in an ancient library, she finds unlikely friends, a warrior's path, and a fight with a new enemy hunting objects of terrible power.",
+  cast:["nesta","cassian","gwyn","emerie","feyre","rhys","eris","briallyn"]},
+ {c:"H",n:"6",title:"A Court of Splintered Harmony",abbr:"ACOSH",year:2026,pov:"Multiple POVs (Azriel, Nesta, Feyre, Cassian, Lucien, Gwyn, Mor and others)",col:"#3c3d6e",
+  plot:"Released 27 October 2026, and labelled The Valkyrie Cycle: Movement I. Deep in the Continent, Koschei the Deathless is stirring and drawing allies who want to reclaim the human lands. The Night Court wants to stop it, but Prythian is still fractured after the Hybern War and the Inner Circle is reeling from betrayals of its own. Includes the earlier special-edition bonus chapters (Azriel's, Wings and Embers, and Feyre and Rhysand's).",
+  cast:["azriel","nesta","feyre","rhys","cassian","elain","lucien","mor","gwyn","koschei"]}
+];
+const UPCOMING={title:"A Court of Forgotten Melody",abbr:"ACOFM",date:"12 January 2027",note:"Book 7 · The Valkyrie Cycle, Movements II and III. Picks up the story ACOSH leaves on a cliffhanger. A further book is planned to finish the cycle."};
+
+/* Characters
+   tw = book where their type/features become a spoiler (-1 = only if a later book is named)
+   loveB / deathB / rev = book where that detail is revealed */
+const CHARS=[
+ {id:"feyre",name:"Feyre Archeron",aka:"Cursebreaker · High Lady of the Night Court",akaB:"M",court:"night",kind:"Made",type:"Human, Made High Fae at the end of ACOTAR",tw:0,
+  feat:"Huntress and painter from the human lands. Holds a spark of power from each of the seven High Lords: shapeshifting, flame, water, ice, light, darkness, winnowing. Inked tattoo on her arm from her bargain with Rhys.",
+  love:"Mate: Rhysand. Formerly loved and was engaged to Tamlin.",loveB:"M",age:"19 in ACOTAR · about 22 by ACOSH",align:"good",status:"alive",
+  death:"Killed by Amarantha at the end of ACOTAR, then brought back by the seven High Lords. Her heart stops again giving birth in ACOSF before she's saved.",deathB:"T",
+  agenda:"Protect her sisters, her son and Velaris. In ACOSH she pushes for a united Prythian and floats the idea of Rhys becoming High King.",books:"T",conn:"Youngest Archeron sister; High Lady of Night"},
+ {id:"rhys",name:"Rhysand",aka:"Rhys · High Lord of the Night Court",court:"night",kind:"High Fae",type:"High Fae with Illyrian blood (can summon wings); daemati (mind-reader)",tw:1,
+  feat:"The most powerful High Lord in Prythian's history. Violet eyes, dark hair, a cruel public mask. Spent nearly fifty years as Amarantha's plaything to keep Velaris hidden.",
+  love:"Mate: Feyre.",loveB:"M",age:"About 500+",align:"good",rev:"M",status:"alive",
+  death:"Dies briefly in the final battle of ACOWAR and is brought back by the High Lords, Tamlin included.",deathB:"W",
+  agenda:"Protect Velaris and his people at any cost. In ACOSH he refuses to consider becoming High King and quietly sends Lucien toward the Autumn Court.",books:"T",conn:"High Lord of Night; Feyre's mate"},
+ {id:"tamlin",name:"Tamlin",aka:"High Lord of the Spring Court",court:"spring",kind:"High Fae",type:"High Fae shapeshifter (a huge horned beast form)",tw:-1,
+  feat:"Golden-haired and green-eyed. Wore a mask fused to his face under Amarantha's curse. Gentle at first, increasingly controlling once Feyre is his.",
+  love:"Feyre (formerly; engaged). No mate.",loveB:"T",age:"Several centuries",align:"grey",rev:"M",status:"alive",death:"",
+  agenda:"First: break the curse. Then: keep Feyre safe by keeping her caged, even allying with Hybern to get her back (ACOMAF). Helps save Rhys in ACOWAR, then lives mostly in beast form in his ruined court.",books:"T",conn:"Feyre's first love; Lucien's old friend"},
+ {id:"lucien",name:"Lucien Vanserra",aka:"Emissary · the fox-masked courtier",court:"autumn",kind:"High Fae",type:"High Fae; fire magic, and Day Court light from his true father",tw:2,
+  feat:"Red hair, a scarred face and a golden mechanical eye. Youngest son of the Autumn Court, who fled to Spring after his family killed the female he loved.",
+  love:"Mate: Elain (she hasn't accepted the bond). His first love, Jesminda, was murdered by his father and brothers.",loveB:"M",age:"A few centuries",align:"good",status:"alive",death:"",
+  agenda:"Win Elain's trust; serve as emissary in the human lands alongside Vassa and Jurian. In ACOSH, after catching Elain with Azriel, he tells the Night Court to rot and says he'll never go near her again.",books:"T",conn:"Tamlin's former emissary; Elain's mate; Helion's son"},
+ {id:"nesta",name:"Nesta Archeron",aka:"Leader of the Valkyries",akaB:"S",court:"night",kind:"Made",type:"Human, Made High Fae by the Cauldron in ACOMAF",tw:1,
+  feat:"Steel-spined eldest sister who took power from the Cauldron itself. Valkyrie warrior who wields the sword Ataraxia and can sense and command the Dread Trove (Mask, Harp, Crown). Taught herself to winnow in ACOSH.",
+  love:"Mate: Cassian.",loveB:"S",age:"About 21 in ACOTAR · mid-20s by ACOSH",align:"good",status:"alive",death:"",
+  agenda:"Find where she belongs. In ACOSH a voice calls her to the Prison; she still hasn't sworn fealty to the Night Court, and at the end she walks into the Prison.",books:"T",conn:"Eldest Archeron sister; Cassian's mate"},
+ {id:"elain",name:"Elain Archeron",aka:"The Seer",akaB:"M",court:"night",kind:"Made",type:"Human, Made High Fae by the Cauldron in ACOMAF; a Seer",tw:1,
+  feat:"Gentle middle sister who loves her garden. The Cauldron made her a Seer with visions no one else has. Her life was rearranged around everyone else's choices.",
+  love:"Mate: Lucien (bond unaccepted). Human fiancé Graysen broke it off after she was Made. Secret affair with Azriel in ACOSH.",loveB:"M",age:"About 20 in ACOTAR",align:"grey",rev:"H",status:"alive",death:"",
+  agenda:"Make her own choices for once. In ACOSH she leaves Velaris with Mor for Vallahan.",books:"T",conn:"Middle Archeron sister; Lucien's mate"},
+ {id:"cassian",name:"Cassian",aka:"General of the Night Court armies",court:"night",kind:"Illyrian",type:"Illyrian warrior (bastard-born), seven red Siphons",tw:-1,
+  feat:"Huge, winged and loud, with a soft heart. Clawed his way up from the Illyrian war-camps to command Rhys's armies. Rhys's brother in all but blood.",
+  love:"Mate: Nesta.",loveB:"S",age:"About 500+",align:"good",status:"alive",death:"",
+  agenda:"Keep his family safe and the Illyrians in line. In ACOSH he meets Eris alone to push the plan to unseat Beron.",books:"M",conn:"Rhys's brother-in-arms; Nesta's mate"},
+ {id:"azriel",name:"Azriel",aka:"Shadowsinger · Spymaster",court:"night",kind:"Illyrian",type:"Illyrian Shadowsinger",tw:-1,
+  feat:"Quiet spymaster with hands scarred by oil and fire from his half-brothers. Shadows whisper secrets to him. Carries Truth-Teller, a blade that came back from Bryce Quinlan in ACOSH.",
+  love:"Loved Mor for centuries. Drawn to Elain (an affair in ACOSH). His shadows behave differently around Gwyn.",loveB:"M",age:"About 500+",align:"grey",rev:"H",status:"alive",death:"",
+  agenda:"Guard the Night Court through spycraft. In ACOSH he's benched by Rhys over Elain and spirals into self-loathing.",books:"M",conn:"Spymaster; Rhys's brother-in-arms"},
+ {id:"mor",name:"Morrigan",aka:"Mor · Third in command",court:"night",kind:"High Fae",type:"High Fae born in the Hewn City; power to compel the truth",tw:-1,
+  feat:"Golden-haired, laughing, fierce. Rhys's cousin. Fled the Court of Nightmares after her family brutalised her and Eris abandoned her on the Autumn border.",
+  love:"Prefers females (she tells Feyre in ACOWAR). Azriel loved her for centuries.",loveB:"W",age:"About 500+",align:"good",status:"alive",death:"",
+  agenda:"Diplomacy for the Night Court on the Continent; leaves for Vallahan with Elain at the end of ACOSH.",books:"M",conn:"Rhys's cousin; Inner Circle"},
+ {id:"amren",name:"Amren",aka:"Rhys's Second",court:"night",kind:"Ancient",type:"An ancient being from another world, trapped in a High Fae body",tw:2,
+  feat:"Small, silver-eyed and terrifying; drinks blood and hoards jewellery. Reads languages no one else can, including the Book of Breathings.",
+  love:"Varian, Prince of Adriata.",loveB:"W",age:"Far older than Prythian's High Lords; thousands of years",align:"good",status:"alive",
+  death:"Unleashes her true form in ACOWAR to wipe out Hybern's army and seems lost, then returns bound in a High Fae body.",deathB:"W",
+  agenda:"Protect the court with cold strategy. In ACOSH she and Feyre openly clash, and she pushes Nesta to choose where she belongs.",books:"M",conn:"Rhys's Second"},
+ {id:"nyx",name:"Nyx",aka:"Son of Feyre and Rhysand",court:"night",kind:"High Fae",type:"High Fae with Illyrian wings",tw:-1,
+  feat:"Born at the end of ACOSF. About six months old in ACOSH, where his naming day is cut short by Bryaxis.",love:"",age:"Infant",align:"good",status:"alive",death:"",agenda:"",books:"S",conn:"Feyre and Rhys's son"},
+ {id:"gwyn",name:"Gwyneth Berdara",aka:"Gwyn · priestess and Valkyrie",court:"night",kind:"High Fae",type:"High Fae priestess",tw:-1,
+  feat:"Teal-eyed, chatty priestess in the library under the House of Wind. Survived an attack on her temple that killed her twin. Sings, and trains as a Valkyrie.",
+  love:"None confirmed. Fans watch her and Azriel closely.",loveB:"S",age:"Young by Fae standards",align:"good",status:"alive",death:"",
+  agenda:"Heal and grow strong. In ACOSH she has stopped training and hasn't forgiven Nesta for the Blood Rite.",books:"S",conn:"Nesta's friend; Valkyrie"},
+ {id:"emerie",name:"Emerie",aka:"Valkyrie",court:"night",kind:"Illyrian",type:"Illyrian; wings damaged when young",tw:-1,
+  feat:"Runs a shop in Windhaven in the Illyrian mountains. Trains with Nesta and Gwyn and runs the Blood Rite with them.",love:"",age:"Young by Fae standards",align:"good",status:"alive",death:"",
+  agenda:"Prove Illyrian females can be warriors.",books:"S",conn:"Nesta's friend; Valkyrie"},
+ {id:"clotho",name:"Clotho",aka:"Head priestess of the library",court:"night",kind:"High Fae",type:"High Fae priestess; cannot speak and writes instead",tw:-1,
+  feat:"Runs the library under the House of Wind, a sanctuary for survivors. In ACOSH she lets Bryaxis live in the library's pit.",love:"",age:"Old",align:"good",status:"alive",death:"",agenda:"Keep the priestesses safe.",books:"S",conn:"Gwyn's protector"},
+ {id:"keir",name:"Keir",aka:"Steward of the Hewn City",court:"night",kind:"High Fae",type:"High Fae; darkness-wielder",tw:-1,
+  feat:"Rules the Court of Nightmares under Rhys. Cruel traditionalist; Mor's father.",love:"",age:"Ancient",align:"bad",status:"alive",death:"",
+  agenda:"Hold on to power and old ways; only lends his Darkbringers in war for a price.",books:"M",conn:"Mor's father"},
+ {id:"devlon",name:"Lord Devlon",aka:"Illyrian camp lord",court:"night",kind:"Illyrian",type:"Illyrian",tw:-1,
+  feat:"Ran the war-camp where Cassian and Azriel were trained. Thinks females belong nowhere near a sword.",love:"",age:"Old",align:"grey",status:"alive",death:"",agenda:"Keep Illyrian tradition.",books:"M",conn:"Trained Cassian and Azriel"},
+ {id:"eris",name:"Eris Vanserra",aka:"Heir to the Autumn Court",court:"autumn",kind:"High Fae",type:"High Fae; fire magic",tw:-1,
+  feat:"Cold, sharp and calculating. Left Mor nailed to a tree on the Autumn border centuries ago. Lucien's eldest brother.",
+  love:"None known.",age:"About 500+",align:"grey",rev:"S",status:"alive",death:"",
+  agenda:"Become High Lord of Autumn. Strikes a secret deal with the Night Court in ACOSF to unseat Beron; in ACOSH he warns that Fae opinion is turning against the humans.",books:"W",conn:"Lucien's brother; Mor's old enemy"},
+ {id:"beron",name:"Beron Vanserra",aka:"High Lord of the Autumn Court",court:"autumn",kind:"High Fae",type:"High Fae; fire magic",tw:-1,
+  feat:"Brutal, controlling husband and father. Murdered Jesminda with his sons.",love:"Wife: the Lady of Autumn.",age:"Ancient",align:"bad",status:"alive",death:"",
+  agenda:"Keep power and side with whoever looks strongest.",books:"W",conn:"Eris and Lucien's father (by law)"},
+ {id:"ladyautumn",name:"Lady of the Autumn Court",aka:"Lucien's mother",court:"autumn",kind:"High Fae",type:"High Fae",tw:-1,
+  feat:"Trapped in her marriage to Beron. Once had a love affair with Helion.",love:"Married to Beron; loved Helion.",loveB:"W",age:"Ancient",align:"good",status:"alive",death:"",agenda:"Protect her sons.",books:"W",conn:"Lucien's mother"},
+ {id:"jesminda",name:"Jesminda",aka:"Lucien's first love",court:"autumn",kind:"Lesser Fae",type:"Lesser faerie",tw:-1,
+  feat:"Remembered only in Lucien's story.",love:"Lucien.",age:"—",align:"good",status:"dead",death:"Murdered by Beron and his sons, long before the series begins (told in ACOTAR).",deathB:"T",agenda:"",books:"T",conn:"Lucien's lost love"},
+ {id:"helion",name:"Helion Spell-Cleaver",aka:"High Lord of the Day Court",court:"day",kind:"High Fae",type:"High Fae; light and spell-breaking",tw:-1,
+  feat:"Golden-skinned, charming and brilliant. Keeper of a great library. Can unravel almost any spell.",love:"Had an affair with the Lady of Autumn.",loveB:"W",age:"Ancient",align:"good",status:"alive",death:"",
+  agenda:"Knowledge and survival. Revealed in ACOWAR to be Lucien's true father.",books:"W",conn:"Lucien's father"},
+ {id:"tarquin",name:"Tarquin",aka:"High Lord of the Summer Court",court:"summer",kind:"High Fae",type:"High Fae; water magic",tw:-1,
+  feat:"Dark-skinned with white hair and sea-glass eyes. Newer to power, inherited after Amarantha's reign. Furious after Feyre steals from him in ACOMAF.",
+  love:"None known.",age:"Young for a High Lord",align:"grey",status:"alive",death:"",
+  agenda:"Protect Adriata. In ACOSH he refuses an alliance against Koschei, accusing Feyre of chasing moral high ground.",books:"M",conn:"High Lord of Summer"},
+ {id:"cresseida",name:"Cresseida",aka:"Princess of Adriata",court:"summer",kind:"High Fae",type:"High Fae",tw:-1,
+  feat:"Tarquin's cousin and adviser; Varian's sister. Suffered under Amarantha.",love:"",age:"Centuries",align:"grey",status:"alive",death:"",agenda:"Protect Summer; sides with Tarquin against the alliance in ACOSH.",books:"M",conn:"Tarquin's cousin"},
+ {id:"varian",name:"Varian",aka:"Prince of Adriata",court:"summer",kind:"High Fae",type:"High Fae warrior",tw:-1,
+  feat:"Captain of Tarquin's guard and Cresseida's brother.",love:"Amren.",loveB:"W",age:"Centuries",align:"good",status:"alive",death:"",agenda:"Guard Summer; keep Amren.",books:"M",conn:"Amren's partner"},
+ {id:"kallias",name:"Kallias",aka:"High Lord of the Winter Court",court:"winter",kind:"High Fae",type:"High Fae; ice magic",tw:-1,
+  feat:"Pale-haired and reserved. Joins the alliance against Hybern.",love:"Wife: Viviane.",age:"Centuries",align:"good",status:"alive",death:"",agenda:"Protect Winter.",books:"W",conn:"High Lord of Winter"},
+ {id:"viviane",name:"Viviane",aka:"Lady of the Winter Court",court:"winter",kind:"High Fae",type:"High Fae",tw:-1,
+  feat:"Warm and fearless. One of Mor's oldest friends.",love:"Married to Kallias.",age:"Centuries",align:"good",status:"alive",death:"",agenda:"Keep the alliance together.",books:"W",conn:"Mor's friend"},
+ {id:"thesan",name:"Thesan",aka:"High Lord of the Dawn Court",court:"dawn",kind:"High Fae",type:"High Fae; healing magic",tw:-1,
+  feat:"Gentle healer-lord who hosts the meeting of High Lords in ACOWAR. His court includes the winged Peregryns.",love:"",age:"Ancient",align:"good",status:"alive",death:"",agenda:"Peace and healing.",books:"W",conn:"High Lord of Dawn"},
+ {id:"alis",name:"Alis",aka:"Spring Court servant",court:"spring",kind:"Lesser Fae",type:"Lesser faerie with bark-like skin",tw:-1,
+  feat:"Feyre's sharp, kind maid at the Spring Court, raising her two nephews. Helps Feyre survive Under the Mountain.",love:"",age:"Unknown",align:"good",status:"alive",death:"",agenda:"Keep her nephews safe.",books:"T",conn:"Feyre's ally"},
+ {id:"ianthe",name:"Ianthe",aka:"High Priestess",court:"spring",kind:"High Fae",type:"High Fae priestess",tw:-1,
+  feat:"Beautiful, pious-seeming and grasping. Wormed her way into Tamlin's court after the curse broke.",love:"Wanted Tamlin (and Lucien).",age:"Centuries",align:"bad",rev:"M",status:"dead",
+  death:"Killed in ACOWAR after betraying the Archeron sisters to Hybern.",deathB:"W",agenda:"Power and influence through the High Lords she attaches herself to.",books:"M",conn:"Tamlin's priestess"},
+ {id:"amarantha",name:"Amarantha",aka:"Hybern's general · Queen Under the Mountain",court:"hybern",kind:"High Fae",type:"High Fae",tw:-1,
+  feat:"Beautiful and sadistic. Keeps Jurian's eye in a ring as a trophy from the old War. Cursed Prythian's High Lords and ruled from Under the Mountain for nearly fifty years.",
+  love:"Wanted Tamlin; kept Rhys as her whore.",age:"Ancient",align:"bad",status:"dead",death:"Killed at the end of ACOTAR once the curse breaks and Tamlin's power returns.",deathB:"T",
+  agenda:"Revenge for her sister's death in the War, and total control of Prythian.",books:"T",conn:"The first book's villain"},
+ {id:"hybern",name:"The King of Hybern",aka:"Hybern",court:"hybern",kind:"High Fae",type:"High Fae king",tw:-1,
+  feat:"Ancient ruler of an island kingdom to the west. Holds the Cauldron.",love:"",age:"Ancient",align:"bad",status:"dead",death:"Killed by Nesta in the final battle of ACOWAR.",deathB:"W",
+  agenda:"Break the Wall and return humans to slavery under the Fae.",books:"M",conn:"Main villain of ACOMAF and ACOWAR"},
+ {id:"jurian",name:"Jurian",aka:"Human general of the War",court:"human",kind:"Human",type:"Human, resurrected by the Cauldron",tw:1,
+  feat:"Legendary human general from the War 500 years ago. Rebuilt by Hybern from the eye Amarantha kept. Unstable but fiercely clever.",love:"Loved Miryam, who chose Drakon.",age:"Born 500+ years ago",align:"grey",rev:"W",status:"alive",death:"",
+  agenda:"Seemed to serve Hybern, but was playing his own game. Now guards the human lands with Vassa and Lucien.",books:"M",conn:"Vassa's ally"},
+ {id:"vassa",name:"Vassa",aka:"The firebird queen",court:"human",kind:"Human",type:"Human queen under Koschei's curse",tw:-1,
+  feat:"Cursed to be a firebird by day and a woman by night, bound to return to Koschei's lake. Bright, bold and funny.",love:"Tension with both Lucien and Jurian.",age:"Young (human)",align:"good",status:"alive",death:"",
+  agenda:"Break her curse and rule her people. In ACOSH Koschei seems to believe her bloodline can free him, since her ancestor bound him.",books:"W",conn:"Lucien and Jurian's ally"},
+ {id:"koschei",name:"Koschei the Deathless",aka:"The death-lord",court:"continent",kind:"Ancient",type:"Ancient death-lord sorcerer",tw:-1,
+  feat:"Bound to a mountain lake on the Continent for millennia. His death is locked in a hexagonal box: whoever holds it controls him (ACOSH).",love:"",age:"Ancient",align:"bad",status:"alive",death:"",
+  agenda:"Escape his binding and claim the human lands. Behind Briallyn in ACOSF and the Continent's plotting in ACOSH.",books:"W",conn:"The Valkyrie Cycle's villain"},
+ {id:"briallyn",name:"Queen Briallyn",aka:"The crone queen",court:"human",kind:"Human",type:"Human queen, turned old by the Cauldron",tw:-1,
+  feat:"Asked the Cauldron for immortality and was given an aged body instead. Allies with Koschei.",love:"",age:"Young in years, ancient in body",align:"bad",status:"dead",death:"Killed by Nesta in ACOSF.",deathB:"S",
+  agenda:"Seize the Dread Trove and serve Koschei.",books:"W",conn:"Koschei's ally"},
+ {id:"suriel",name:"The Suriel",aka:"Truth-teller",court:"spring",kind:"Creature",type:"Ancient creature that must answer truthfully when caught",tw:-1,
+  feat:"Robed, bony, many-fingered. Tells Feyre whatever she asks once trapped, and seems almost fond of her.",love:"",age:"Ancient",align:"good",status:"dead",death:"Found dying in ACOWAR, it gives Feyre one last crucial truth.",deathB:"W",agenda:"Knowledge.",books:"T",conn:"Feyre's oracle"},
+ {id:"bonecarver",name:"The Bone Carver",aka:"Prisoner",court:"prison",kind:"Ancient",type:"Ancient being in the Prison",tw:-1,
+  feat:"Takes the form of a child; carves bones. Trades secrets with Feyre in ACOMAF.",love:"",age:"Ancient",align:"grey",status:"alive",death:"",agenda:"Freedom, curiosity.",books:"M",conn:"Feyre's bargain"},
+ {id:"weaver",name:"The Weaver",aka:"Stryga",court:"other",kind:"Ancient",type:"Ancient being of the Middle",tw:-1,
+  feat:"Blind spinner in a cottage in the Middle who weaves living things into her cloth. Feyre steals from her in ACOMAF.",love:"",age:"Ancient",align:"grey",status:"alive",death:"",agenda:"Her own.",books:"M",conn:"Bone Carver's sibling"},
+ {id:"bryaxis",name:"Bryaxis",aka:"Creature of fear",court:"night",kind:"Creature",type:"Ancient creature that shows you your worst fears",tw:-1,
+  feat:"Once sealed in the library under the House of Wind. Returns in ACOSH darker and crueller, attacking Nyx's naming day, and is driven off by Nesta.",love:"",age:"Ancient",align:"bad",status:"alive",death:"",
+  agenda:"In ACOSH it seems to be under Koschei's influence. Clotho lets it live in the library's pit.",books:"W",conn:"Nesta's foe"},
+ {id:"father",name:"Feyre's father",aka:"Archeron, merchant",court:"human",kind:"Human",type:"Human",tw:-1,
+  feat:"A ruined merchant left crippled and helpless at the start of ACOTAR.",love:"Widowed.",age:"Human, middle-aged",align:"good",status:"dead",death:"Arrives with ships to fight in ACOWAR, then is killed by the King of Hybern.",deathB:"W",agenda:"Redeem himself to his daughters.",books:"T",conn:"Father of the Archeron sisters"},
+ {id:"clare",name:"Clare Beddor",aka:"Village girl",court:"human",kind:"Human",type:"Human",tw:-1,
+  feat:"A girl from Feyre's village whose name Feyre gives as her own.",love:"",age:"Young",align:"good",status:"dead",death:"Tortured and killed by Amarantha in ACOTAR.",deathB:"T",agenda:"",books:"T",conn:"Amarantha's victim"},
+ {id:"miryam",name:"Miryam",aka:"Heroine of the War",court:"other",kind:"Human",type:"Human, made long-lived",tw:-1,
+  feat:"Led enslaved humans to freedom during the War. Lives hidden on the island of Cretea.",love:"Wife of Drakon; once Jurian's love.",age:"500+ years",align:"good",status:"alive",death:"",agenda:"Protect her people; returns to fight Hybern in ACOWAR.",books:"W",conn:"Drakon's wife"},
+ {id:"drakon",name:"Prince Drakon",aka:"Seraphim prince",court:"other",kind:"High Fae",type:"Seraphim (winged Fae)",tw:-1,
+  feat:"Winged prince who fought for the humans in the War and hid his people on Cretea.",love:"Miryam.",age:"Ancient",align:"good",status:"alive",death:"",agenda:"Repay old debts by fighting Hybern (ACOWAR).",books:"W",conn:"Miryam's husband"},
+ {id:"bryce",name:"Bryce Quinlan",aka:"Visitor from Midgard",court:"other",kind:"Other",type:"Half-Fae, half-human from the Crescent City world",tw:-1,
+  feat:"Crossed into Prythian in House of Flame and Shadow (Crescent City 3). Leaves the Night Court split: Nesta gave her the Mask, and she took Azriel's blade for a time.",love:"Hunt Athalar (Crescent City).",age:"Mid-20s",align:"grey",status:"alive",death:"",
+  agenda:"Save her own world. Her visit is the fault line the Inner Circle cracks along in ACOSH.",books:"H",conn:"Crescent City crossover"},
+ {id:"vallahanking",name:"King of Vallahan",aka:"Continent ruler",court:"continent",kind:"High Fae",type:"Fae king",tw:-1,
+  feat:"Red-haired and bearded, unusual on the Continent. Attends the summit at Storr in ACOSH.",love:"",age:"Unknown",align:"grey",status:"alive",death:"",agenda:"Keep his options open between Prythian and the Continent's war party.",books:"H",conn:"Mor's diplomatic target"},
+ {id:"vizier",name:"The Grand Vizier",aka:"Continent envoy",court:"continent",kind:"High Fae",type:"Fae",tw:-1,
+  feat:"Speaks for the Continent's war faction at Storr in ACOSH.",love:"",age:"Unknown",align:"bad",status:"alive",death:"",agenda:"Tells Prythian to stay out of the Continent's business and refuses the treaty.",books:"H",conn:"Continent war faction"},
+ {id:"mistress",name:"Mistress of the Unseen",aka:"Priestess",court:"continent",kind:"High Fae",type:"Fae priestess",tw:-1,
+  feat:"A Continent priestess whose blessing at Storr makes Feyre uneasy (ACOSH).",love:"",age:"Unknown",align:"bad",status:"alive",death:"",agenda:"Backs the plan to march on the human lands.",books:"H",conn:"Continent war faction"}
+];
+
+/* Name pronunciations. Feyre and Rhysand follow Sarah J. Maas's own guidance; the rest are the common fandom readings. */
+const PRON={feyre:"FAY-ruh AR-ker-on",rhys:"REE-sand (Rhys: REESE)",tamlin:"TAM-lin",lucien:"LOO-see-en van-SAIR-uh",nesta:"NEST-uh",elain:"eh-LAYN",cassian:"KASS-ee-un",azriel:"AZ-ree-el",mor:"MOR-ih-gun (Mor: MORE)",amren:"AM-ren",nyx:"NIKS",gwyn:"GWIN-eth ber-DAR-uh (Gwyn: GWIN)",emerie:"EM-er-ee",clotho:"KLOH-thoh",keir:"KEER",devlon:"DEV-lon",eris:"AIR-iss",beron:"BAIR-on",ladyautumn:"—",jesminda:"jez-MIN-duh",helion:"HEE-lee-on",tarquin:"TAR-kwin",cresseida:"kreh-SAY-duh",varian:"VAIR-ee-un",kallias:"KAL-ee-us",viviane:"VIV-ee-ahn",thesan:"THEE-san",alis:"AL-iss",ianthe:"eye-AN-thee",amarantha:"am-uh-RAN-thuh",hybern:"HY-burn",jurian:"JOOR-ee-un",vassa:"VAH-suh",koschei:"KOSH-ay",briallyn:"bree-AL-in",suriel:"SOOR-ee-el",bonecarver:"—",weaver:"—",bryaxis:"bry-AX-iss",father:"AR-ker-on",clare:"CLAIR BED-er",miryam:"MEER-ee-um",drakon:"DRAY-kon",bryce:"BRISE KWIN-lun",vallahanking:"vuh-LAH-han",vizier:"vih-ZEER",mistress:"—"};
+
+/* Connections: [a, b, type, label, book] */
+const EDGES=[
+ ["feyre","rhys","love","mates","M"],["feyre","tamlin","love","former love, engaged","T"],["feyre","nesta","fam","sisters","T"],["feyre","elain","fam","sisters","T"],["nesta","elain","fam","sisters","T"],
+ ["feyre","nyx","fam","mother and son","S"],["rhys","nyx","fam","father and son","S"],["nesta","cassian","love","mates","S"],["elain","lucien","love","mates (unaccepted)","M"],["elain","azriel","love","secret affair","H"],
+ ["azriel","mor","love","unrequited love","M"],["amren","varian","love","partners","W"],["lucien","tamlin","friend","old friends, his emissary","T"],["lucien","eris","fam","brothers","W"],["lucien","beron","foe","legal father, killed Jesminda","T"],
+ ["lucien","helion","fam","true father","W"],["lucien","ladyautumn","fam","mother","W"],["eris","beron","fam","heir and son","W"],["eris","mor","foe","abandoned her","M"],["rhys","mor","fam","cousins","M"],
+ ["rhys","cassian","friend","brothers in all but blood","M"],["rhys","azriel","friend","brothers in all but blood","M"],["cassian","azriel","friend","brothers","M"],["rhys","amren","ally","his Second","M"],["feyre","amren","ally","High Lady and Second, at odds in ACOSH","M"],
+ ["tamlin","rhys","foe","old enemies","T"],["tamlin","amarantha","foe","cursed him","T"],["rhys","amarantha","foe","enslaved him","T"],["feyre","amarantha","foe","trials Under the Mountain","T"],["hybern","amarantha","ally","his general","T"],
+ ["hybern","jurian","ally","resurrected him","M"],["jurian","amarantha","foe","old War enemies","T"],["jurian","vassa","ally","guard the human lands","W"],["lucien","vassa","ally","emissary, close","W"],["vassa","koschei","foe","cursed by him","W"],
+ ["koschei","briallyn","ally","her master","S"],["nesta","briallyn","foe","killed her","S"],["nesta","hybern","foe","killed him","W"],["ianthe","tamlin","ally","his High Priestess","M"],["ianthe","hybern","ally","betrayed the sisters to him","W"],
+ ["nesta","gwyn","friend","Valkyries","S"],["nesta","emerie","friend","Valkyries","S"],["gwyn","emerie","friend","Valkyries","S"],["clotho","gwyn","ally","head priestess","S"],["gwyn","azriel","ally","trains with him","S"],
+ ["mor","keir","fam","father","M"],["keir","rhys","foe","uneasy steward","M"],["tarquin","feyre","foe","she stole from him; refuses alliance","M"],["tarquin","cresseida","fam","cousins","M"],["tarquin","varian","fam","cousins","M"],["cresseida","varian","fam","siblings","M"],
+ ["kallias","viviane","love","married","W"],["mor","viviane","friend","old friends","W"],["helion","ladyautumn","love","old affair","W"],["cassian","devlon","ally","raised in his camp","M"],["azriel","devlon","ally","raised in his camp","M"],
+ ["feyre","alis","ally","friends","T"],["feyre","suriel","ally","her oracle","T"],["feyre","weaver","foe","stole from her","M"],["feyre","bonecarver","ally","bargain","M"],["nesta","bryce","ally","gave her the Mask","H"],
+ ["azriel","bryce","foe","took Truth-Teller","H"],["bryaxis","nesta","foe","driven off by her","H"],["father","feyre","fam","father","T"],["father","nesta","fam","father","T"],["father","elain","fam","father","T"],["father","hybern","foe","killed by him","W"],
+ ["clare","amarantha","foe","killed by her","T"],["lucien","jesminda","love","first love","T"],["beron","jesminda","foe","murdered her","T"],["drakon","miryam","love","married","W"],["jurian","miryam","love","former love","W"],
+ ["cassian","eris","ally","secret pact","S"],["mor","vallahanking","ally","diplomacy","H"],["mor","elain","ally","travel to Vallahan","H"],["vizier","koschei","ally","the Continent listens to him","H"],["mistress","vizier","ally","war faction","H"],["lucien","rhys","foe","furious after ACOSH reveal","H"]
+];
+
+/* Family tree groups. FAMX = people who aren't full character entries */
+const FAMILIES=[
+ {name:"House Archeron & the Night Court",gens:[["father","mother","rhysfather","rhysmother"],["cassian","nesta","elain","feyre","rhys","rhyssister"],["nyx"]],
+  links:[["father","nesta"],["father","elain"],["father","feyre"],["mother","nesta"],["mother","elain"],["mother","feyre"],["rhysfather","rhys"],["rhysmother","rhys"],["rhysfather","rhyssister"],["rhysmother","rhyssister"],["feyre","nyx"],["rhys","nyx"]],
+  spouse:[["father","mother"],["rhysfather","rhysmother"],["feyre","rhys"],["cassian","nesta"]]},
+ {name:"House Vanserra (Autumn) & Day",gens:[["beron","ladyautumn","helion"],["eris","vbros","lucien","jesminda"]],
+  links:[["beron","eris"],["ladyautumn","eris"],["beron","vbros"],["ladyautumn","vbros"],["ladyautumn","lucien"],["helion","lucien"]],
+  spouse:[["beron","ladyautumn"],["ladyautumn","helion"],["lucien","jesminda"]]},
+ {name:"The Hewn City",gens:[["keir","mormother"],["mor"]],links:[["keir","mor"],["mormother","mor"]],spouse:[["keir","mormother"]]},
+ {name:"Adriata (Summer)",gens:[["tarquin","cresseida","varian","amren"]],sib:[["tarquin","cresseida"],["cresseida","varian"]],spouse:[["varian","amren"]]},
+ {name:"Azriel's family",gens:[["azfather","azmother"],["azbros","azriel"]],links:[["azfather","azbros"],["azfather","azriel"],["azmother","azriel"]]},
+ {name:"Spring Court",gens:[["tamfather","tammother"],["tambros","tamlin"]],links:[["tamfather","tambros"],["tamfather","tamlin"],["tammother","tamlin"],["tammother","tambros"]],spouse:[["tamfather","tammother"]]},
+ {name:"Winter & Cretea",gens:[["kallias","viviane","drakon","miryam"]],spouse:[["kallias","viviane"],["drakon","miryam"]]}
+];
+const FAMX={
+ mother:{name:"Mother Archeron",note:"Died when the girls were young",dead:true},
+ rhysfather:{name:"Rhys's father",note:"Former High Lord of Night",dead:true},
+ rhysmother:{name:"Rhys's mother",note:"Illyrian; murdered",dead:true},
+ rhyssister:{name:"Rhys's sister",note:"Murdered as a girl",dead:true},
+ vbros:{name:"Five more brothers",note:"Beron's other sons"},
+ mormother:{name:"Mor's mother",note:"Court of Nightmares"},
+ azfather:{name:"Azriel's father",note:"An Illyrian lord"},
+ azmother:{name:"Azriel's mother",note:"Kept as a servant"},
+ azbros:{name:"Half-brothers",note:"Burned his hands"},
+ tamfather:{name:"Tamlin's father",note:"Former High Lord of Spring",dead:true},
+ tammother:{name:"Tamlin's mother",note:"Former Lady of Spring"},
+ tambros:{name:"Tamlin's brothers",note:"Cruel; killed",dead:true}
+};
+
+/* Courts */
+const COURTS=[
+ {id:"night",name:"The Night Court",kind:"Solar court",seat:"Velaris, the City of Starlight (hidden), and the Hewn City under the mountain",b:"T",seatB:"M",featB:"M",
+  pos:[["High Lord","rhys","T"],["High Lady","feyre","M"],["Second","amren","M"],["Third","mor","M"],["General","cassian","M"],["Spymaster","azriel","M"],["Steward, Hewn City","keir","M"],["Valkyries","nesta","S"],["Illyrian camp lord","devlon","M"],["Library","clotho","S"]],
+  feat:"The largest and most feared court, covering Prythian's north. It is really three worlds: the hidden, art-loving city of Velaris; the Hewn City and its Court of Nightmares, which the rest of Prythian thinks is the whole court; and the Illyrian war-bands in the mountains. Stars, darkness and dreams are its magic.",
+  war:"Velaris is attacked by Hybern in ACOMAF and the war leaves scars across the city. The Night Court leads the alliance that wins the war in ACOWAR. In ACOSH the Inner Circle is split over Bryce and the Mask, Bryaxis attacks Nyx's naming day, and Elain leaves with Mor for the Continent.",warB:"M"},
+ {id:"spring",name:"The Spring Court",kind:"Seasonal court",seat:"Tamlin's manor",b:"T",
+  pos:[["High Lord","tamlin","T"],["Emissary (former)","lucien","T"],["High Priestess (former)","ianthe","M"],["Household","alis","T"]],
+  feat:"Eternal spring: green hills, roses and lush gardens just north of the old Wall. The masks stuck to everyone's faces in ACOTAR were part of Amarantha's curse. Calanmai, the Great Rite, is celebrated here.",
+  war:"Feyre's sabotage in ACOWAR leaves Tamlin's sentries scattered and his court gutted, and Hybern's alliance costs him everything. Afterwards the court is a ruin and Tamlin mostly lives as a beast. In ACOSH Rhys suggests Lucien step back into court politics as Spring's man to get near Beron.",warB:"W"},
+ {id:"autumn",name:"The Autumn Court",kind:"Seasonal court",seat:"The Forest House",b:"T",
+  pos:[["High Lord","beron","W"],["Lady","ladyautumn","W"],["Heir","eris","W"],["Youngest son","lucien","T"]],
+  feat:"Endless red-and-gold forests. Fire is its magic and red hair runs in the ruling family. A court ruled through fear of Beron.",
+  war:"Beron joins the fight against Hybern late. Afterwards Eris works toward overthrowing his father, with a secret Night Court deal in ACOSF. In ACOSH Eris taunts Cassian that the pendulum is swinging back against the humans.",warB:"W"},
+ {id:"summer",name:"The Summer Court",kind:"Seasonal court",seat:"Adriata, an island city in a bay",b:"M",
+  pos:[["High Lord","tarquin","M"],["Princess","cresseida","M"],["Prince, captain of the guard","varian","M"]],
+  feat:"Sun, sea and white stone. Water is its magic. Adriata glitters, and Tarquin's treasury held half of the Book of Breathings.",
+  war:"Hybern strikes Adriata in ACOWAR. Tarquin fights with the alliance despite his grudge against Feyre and Rhys. In ACOSH he flatly refuses to join them against Koschei.",warB:"W"},
+ {id:"winter",name:"The Winter Court",kind:"Seasonal court",seat:"Snowbound palace",b:"W",
+  pos:[["High Lord","kallias","W"],["Lady","viviane","W"]],
+  feat:"Snow, ice and long nights, ruled by a warm Lady and a reserved High Lord. Ice is its magic.",
+  war:"Winter suffered under Amarantha and fights with the alliance in ACOWAR.",warB:"W"},
+ {id:"day",name:"The Day Court",kind:"Solar court",seat:"Helion's sunlit palace",b:"W",
+  pos:[["High Lord","helion","W"]],
+  feat:"Gold, light and learning. Home to one of Prythian's great libraries. Its High Lord can break almost any spell.",
+  war:"Helion joins the alliance in ACOWAR. His secret, that he is Lucien's father, comes out during the war.",warB:"W"},
+ {id:"dawn",name:"The Dawn Court",kind:"Solar court",seat:"Thesan's palace in the eastern mountains",b:"W",
+  pos:[["High Lord","thesan","W"]],
+  feat:"Pastel light, healers and the winged Peregryns. Its magic is tied to healing.",
+  war:"Thesan hosts the meeting of the High Lords in ACOWAR and the Dawn Court fights with the alliance.",warB:"W"},
+ {id:"hybern",name:"Hybern",kind:"Kingdom across the sea",seat:"An island west of Prythian",b:"T",
+  pos:[["King","hybern","M"],["General","amarantha","T"],["Resurrected general","jurian","M"]],
+  feat:"An old Fae kingdom that never accepted the Treaty. Keeper of the Cauldron.",
+  war:"Hybern loses the war and its king in ACOWAR. In ACOSH a half-dead messenger tells Azriel that Hybern now wants an alliance.",warB:"W"},
+ {id:"human",name:"The human lands",kind:"South of the old Wall",seat:"Ruled by human queens",b:"T",
+  pos:[["Queen","vassa","W"],["Queen (former)","briallyn","W"],["General","jurian","M"]],
+  feat:"Where Feyre grew up. Humans fear and resent the Fae after centuries of slavery and the War.",
+  war:"The Wall falls in ACOWAR and the human lands lie open. In ACOSH the Continent's Fae plan to march on them as soon as they have Made objects.",warB:"W"},
+ {id:"continent",name:"The Continent",kind:"Lands across the sea",seat:"Vallahan, Rask, Montesere; neutral Storr",b:"W",
+  pos:[["Death-lord","koschei","W"],["King of Vallahan","vallahanking","H"],["Grand Vizier","vizier","H"],["Priestess","mistress","H"]],
+  feat:"Huge Fae and human kingdoms. Much of the land is infertile. Koschei is bound to a lake deep inside it.",
+  war:"In ACOSH its factions hunt Made objects, including the box holding Koschei's death, and refuse Prythian's treaty at Storr.",warB:"H"},
+ {id:"prison",name:"The Prison",kind:"Island fortress",seat:"An island in the sea off the Night Court",b:"M",
+  pos:[["Prisoner","bonecarver","M"]],
+  feat:"A mountain-prison for the oldest and most dangerous beings. In ACOSH Nesta says the Prison is a court unto itself, and that Prythian once had a High King and Queen.",
+  war:"At the end of ACOSH Nesta wills herself inside; Gwydion lights the way, then the Prison takes it.",warB:"H"}
+];
+
+/* Eras */
+const ERAS=[
+ {id:"e-ancient",when:"Before history",t:"The Mother & the Cauldron",d:"The Cauldron made the world and can still Make or unmake people. Ancient beings like Amren, the Weaver and the Bone Carver date from these days.",b:"T"},
+ {id:"e-dominion",when:"Thousands of years",t:"Fae rule over humans",d:"Fae of every land enslaved humans. High Kings and Queens may once have ruled Prythian (an ACOSH hint).",b:"T"},
+ {id:"e-war",when:"About 500 years ago",t:"The War",d:"Humans and their Fae allies rose up. Jurian fought Amarantha, Miryam and Drakon led their people to freedom, and Rhys fought too.",b:"T"},
+ {id:"e-wall",when:"500 years",t:"The Treaty & the Wall",d:"A Treaty split the land: Fae in Prythian to the north, humans to the south, an invisible Wall between. Crossing it costs a life for a life.",b:"T"},
+ {id:"e-mountain",when:"About 50 years before ACOTAR",t:"Under the Mountain",d:"Amarantha cursed the High Lords and ruled Prythian from Under the Mountain for nearly fifty years.",b:"T"},
+ {id:"e-hybern",when:"ACOTAR → ACOWAR",t:"The Hybern War",d:"Amarantha falls, Hybern rises, the Wall comes down, and the courts unite to win the war.",b:"M"},
+ {id:"e-rebuild",when:"ACOFAS → ACOSF",t:"Rebuilding",d:"Velaris heals, Nesta finds the Valkyries, and the Dread Trove and Koschei appear.",b:"F"},
+ {id:"e-valkyrie",when:"ACOSH →",t:"The Valkyrie Cycle",d:"A multi-book arc beginning in ACOSH: Koschei stirring, the Continent mobilising, the Inner Circle fractured.",b:"H"}
+];
+/* Timeline: when, title, detail, book (spoiler level), isBook */
+const TIMELINE=[
+ ["Ancient","Amren comes into this world","An ancient being trapped in a High Fae body, she has served Rhys for centuries.","W"],
+ ["~500 years ago","The War","Humans and Fae allies fight the Fae who enslaved them. Amarantha takes Jurian's eye as a trophy.","T"],
+ ["~500 years ago","The Treaty & the Wall","Prythian and the human lands are divided.","T"],
+ ["Centuries ago","Rhys's mother and sister are murdered","Killed by Tamlin's father and brothers; Rhys and his father take revenge. The root of the Night-Spring feud.","M"],
+ ["Centuries ago","Mor flees the Court of Nightmares","Eris leaves her on the Autumn border; Rhys and the others take her in.","M"],
+ ["Centuries ago","Jesminda is murdered","Lucien flees Autumn for the Spring Court.","T"],
+ ["~50 years before","Amarantha takes Prythian","Rhys hides Velaris from her by becoming her prisoner and plaything.","M"],
+ ["Year 0 · winter","ACOTAR begins","Feyre, 19, kills a wolf and is taken across the Wall.","T",1],
+ ["Year 0 · spring","Under the Mountain","Three trials, a riddle, a death, and a rebirth. Amarantha falls.","T"],
+ ["~3 months later","ACOMAF begins","Feyre is pulled to the Night Court by her bargain with Rhys.","M",1],
+ ["Summer","Hybern's raid","Nesta and Elain are thrown into the Cauldron and Made. Feyre goes back to Spring as a spy.","M"],
+ ["Straight after","ACOWAR","Spring is dismantled, the courts unite, the Wall falls and Hybern is defeated.","W",1],
+ ["First Winter Solstice","ACOFAS","Velaris rebuilds; Nesta is falling apart.","F",1],
+ ["About a year later","ACOSF","Nesta trains, the Valkyries rise, the Dread Trove is found and Nyx is born.","S",1],
+ ["A few months on","Bryce Quinlan arrives","Crescent City: House of Flame and Shadow. Nesta gives Bryce the Mask.","H"],
+ ["4 weeks after Bryce","ACOSH","Nyx is six months old. Azriel's spies find Continent factions hunting Made objects.","H",1],
+ ["ACOSH","Summit at Storr","The Continent refuses Prythian's treaty and all but admits it plans to march on the humans.","H"],
+ ["Autumn equinox","Nyx's naming day","Bryaxis attacks; Nesta drives it off with Ataraxia.","H"],
+ ["End of ACOSH","Breaking points","Lucien finds Elain with Azriel; Nesta enters the Prison; Elain leaves with Mor for Vallahan.","H"],
+ ["12 January 2027","A Court of Forgotten Melody","Book 7 releases.","H",1]
+];
+/* Velaris places (x,y on the schematic city map) */
+const PLACES=[
+ {id:"pl-sidra",name:"The Sidra",x:300,y:205,b:"M",d:"The river that runs through Velaris to the sea. The river house sits on its bank, and Mor drags Azriel down to it in ACOSH."},
+ {id:"pl-how",name:"The House of Wind",x:470,y:60,b:"M",d:"Rhys's palace carved into the mountain above the city, reachable by wings or ten thousand steps. Nesta lives and trains here in ACOSF. The House itself is alive."},
+ {id:"pl-lib",name:"The Library",x:500,y:95,b:"S",d:"A sanctuary under the House of Wind run by priestesses like Clotho and Gwyn. Bryaxis now lives in its pit (ACOSH)."},
+ {id:"pl-town",name:"Rhys's townhouse",x:260,y:150,b:"M",d:"The Inner Circle's home base in the city in ACOMAF."},
+ {id:"pl-river",name:"The river house",x:380,y:230,b:"S",d:"Feyre and Rhys's new home on the Sidra, built after the war. Scene of the ACOSH blow-up between Lucien and Azriel."},
+ {id:"pl-rainbow",name:"The Rainbow",x:170,y:240,b:"M",d:"The artists' quarter, all colour. Feyre's studio is here (ACOFAS)."},
+ {id:"pl-ptj",name:"Palace of Thread and Jewels",x:210,y:105,b:"M",d:"A glittering market for fine goods."},
+ {id:"pl-rita",name:"Rita's",x:120,y:170,b:"F",d:"A tavern Nesta haunts in her drinking spiral."},
+ {id:"pl-sym",name:"The concert hall",x:330,y:120,b:"S",d:"Nesta's refuge for music; in ACOSH she hides in seats nobody knows about."},
+ {id:"pl-sea",name:"The sea",x:560,y:250,b:"M",d:"Velaris lies where the Sidra meets the sea. Nesta tries to winnow across it to the Prison in ACOSH."}
+];
+/* Prythian schematic regions */
+const REGIONS=[
+ {id:"night",label:"Night Court",d:"M150 40 L460 30 L520 90 L470 170 L330 185 L190 175 L140 110 Z",lx:320,ly:105},
+ {id:"winter",label:"Winter",d:"M470 170 L520 90 L570 120 L560 215 L470 230 Z",lx:515,ly:170},
+ {id:"day",label:"Day",d:"M190 175 L330 185 L470 170 L470 230 L340 250 L230 240 Z",lx:335,ly:215},
+ {id:"autumn",label:"Autumn",d:"M140 110 L190 175 L230 240 L210 300 L120 280 L100 190 Z",lx:162,ly:225},
+ {id:"dawn",label:"Dawn",d:"M470 230 L560 215 L575 300 L470 310 L430 270 Z",lx:510,ly:268},
+ {id:"summer",label:"Summer",d:"M120 280 L210 300 L250 340 L190 380 L105 350 Z",lx:170,ly:335},
+ {id:"spring",label:"Spring",d:"M210 300 L230 240 L340 250 L430 270 L470 310 L420 360 L250 340 Z",lx:340,ly:305},
+ {id:"human",label:"Human lands",d:"M105 350 L190 380 L250 340 L420 360 L470 310 L560 330 L560 440 L90 440 Z",lx:330,ly:410}
+];
+
+/* ============ RECAPS (my own summaries) ============ */
+const RECAPS={
+ T:{start:"Feyre, 19, is the only thing keeping her family from starving. Her father lost his fortune and her sisters (cold Nesta, sweet Elain) are no help. Hunting in the snowy woods near the Wall, she kills a huge wolf, not knowing it is a faerie.",
+  events:["A beast-like faerie bursts into her cottage and invokes the Treaty: a life for a life. Feyre must live in Prythian for the rest of her days.","At the Spring Court she meets Tamlin, its High Lord, his friend and emissary Lucien, and the faerie maid Alis. Everyone wears a mask they can't take off.","A blight is weakening faerie magic. Feyre traps the Suriel, which tells her to stay close to Tamlin. She and Tamlin fall in love.","At the Calanmai fire rite, a stranger in dark clothes, Rhysand, rescues her from three faeries.","Tamlin sends her home to keep her safe. She discovers Nesta tried to cross the Wall for her, then goes back to find the manor deserted.","Under the Mountain: Amarantha, a general from Hybern, cursed Prythian's High Lords nearly fifty years ago. Feyre gets a chance to free Tamlin: pass three trials, or answer a riddle.","Rhys heals her broken arm in exchange for a bargain: one week of every month at the Night Court. He drugs her and parades her at Amarantha's court, but quietly protects her too.","Trial one is the Middengard Wyrm in a mud maze. Trial two is a deadly riddle-and-lever puzzle where Rhys helps her in her mind. Trial three: stab three kneeling, hooded faeries. The third is Tamlin."],
+  end:"Feyre solves the riddle (the answer is love). Amarantha tortures and kills her, the curse breaks, and Tamlin kills Amarantha. The seven High Lords each give Feyre a spark of power and she wakes as High Fae. She goes home to Spring with Tamlin, with Rhys's bargain still tattooed on her arm.",
+  remember:["Feyre is now High Fae and carries a little of every High Lord's power.","She owes Rhys one week a month, sealed by the tattoo.","Rhys is not what he seemed: he protected her Under the Mountain.","Lucien lost an eye to Amarantha and wears a golden replacement.","Feyre is deeply traumatised by what she had to do in the third trial."]},
+ M:{start:"About three months later, Feyre is falling apart at the Spring Court: nightmares, vomiting, no purpose. Tamlin is suffocating her with protection, and the priestess Ianthe is always around.",
+  events:["On her wedding day to Tamlin, Feyre panics. Rhys arrives to claim his week and takes her away.","At the Night Court she meets the Inner Circle: Cassian, Azriel, Mor and Amren. Rhys teaches her to read and to shield her mind.","She learns the truth: Rhys became Amarantha's prisoner to keep Velaris, the City of Starlight, hidden. The rest of Prythian only knows the Court of Nightmares.","The threat: the King of Hybern wants the Cauldron to break the Wall and enslave humans again. To stop it they need the Book of Breathings, half held in the Summer Court, half by the human queens.","Feyre discovers she has power from all seven courts. She steals the Summer half of the Book from Tarquin, breaking his trust.","Tamlin locks her in the manor. Her power explodes, and Mor rescues her. Feyre chooses the Night Court.","Feyre tames her fear by facing the Weaver, makes a bargain with the Bone Carver in the Prison, and gets the Ouroboros mirror.","She and Rhys fall in love. She learns they are mates and that he hid it. She accepts the bond and becomes High Lady, a title no court has had before.","The human queens can't be trusted. Hybern's spy work, helped by Tamlin and Ianthe, leads to the sisters being taken."],
+  end:"At Hybern's castle, the King throws Nesta and Elain into the Cauldron and they come out as High Fae. Elain is revealed as Lucien's mate. Nesta curses the King. Jurian is back from the dead. To protect everyone, Feyre pretends Rhys brainwashed her and returns to Spring with Tamlin as a spy.",
+  remember:["Feyre is secretly High Lady and Rhys's mate. Spring doesn't know.","Tamlin and Ianthe allied with Hybern.","Nesta and Elain are newly Made; Nesta took something from the Cauldron.","Lucien and Elain are mates; Elain was engaged to a human.","Velaris has been attacked and the Inner Circle is wounded."]},
+ W:{start:"Feyre is inside the Spring Court, smiling at Tamlin while she pulls his court apart from within.",
+  events:["She feeds suspicion between Tamlin's sentries and Ianthe, then escapes with Lucien, who learns the truth about Elain and the Night Court.","Back in Velaris, the sisters struggle. Elain has visions. Nesta is furious and terrified of her new power.","The High Lords meet at the Dawn Court. Feyre is revealed as High Lady, Mor's past with Eris comes out, and the alliance nearly collapses.","Hybern hits Adriata and the human lands. Feyre recruits ancient beings to fight, including the Bone Carver.","Feyre learns Lucien's true father is Helion. The Suriel, dying, gives her one more truth.","Jurian turns out to have been working against Hybern. Lucien leaves to find Vassa, a human queen cursed by Koschei.","The Wall comes down."],
+  end:"In the final battle Amren unleashes her true form, Feyre's father arrives with ships and is killed by the King, and Nesta kills the King of Hybern. Rhys dies and the High Lords, Tamlin last, bring him back. Amren returns in a High Fae body. Prythian survives, but nothing is the same.",
+  remember:["The Wall is gone; humans and Fae now share a border.","Nesta has dark, unexplained power from the Cauldron and is drowning in trauma.","Lucien is Helion's son and is off with Vassa and Jurian.","Tamlin helped save Rhys but is now alone in a ruined court.","Koschei exists and has Vassa's curse in his hands."]},
+ F:{start:"It's the first Winter Solstice after the war. Velaris is rebuilding and the Inner Circle is trying to be normal.",
+  events:["Feyre wants to help the city heal and plans a studio to teach art to traumatised kids in the Rainbow.","Rhys checks on Tamlin, who is living almost entirely as a beast.","Nesta is drinking, gambling and refusing every offer of help. Cassian and Feyre are at their wits' end.","Elain, Lucien and Azriel orbit each other awkwardly.","Gifts, family dinner, and Feyre and Rhys start talking about the future, including children."],
+  end:"A gentle, cosy story that ends with Feyre and Rhys deciding something has to change with Nesta, setting up ACOSF.",
+  remember:["Nesta is in a spiral and pushing everyone away.","Tamlin is broken.","Feyre and Rhys are thinking about a family."]},
+ S:{start:"Feyre and Rhys give Nesta an ultimatum: move into the House of Wind, train with Cassian every morning and work in the library under the House. She hates all of it.",
+  events:["Nesta climbs the ten thousand steps, gets sober, and slowly starts to heal.","In the library she meets Gwyn, a priestess who survived something terrible, and through training, Emerie, an Illyrian shopkeeper. The three become the Valkyries.","The Dread Trove (the Mask, the Harp and the Crown) resurfaces and Nesta can sense them. The Night Court asks her to hunt them.","Briallyn, a human queen the Cauldron left old, works with Koschei to use the Trove.","Eris makes a secret deal with the Night Court to take Autumn from his father.","Nesta, Gwyn and Emerie run the brutal Illyrian Blood Rite, and win.","Nesta and Cassian accept the mating bond.","Feyre is pregnant with a winged baby, and the pregnancy is dangerous. Rhys kept it from her."],
+  end:"Nesta kills Briallyn and uses the Trove to save Feyre and the baby when Feyre's heart stops in childbirth. Nyx is born. Nesta has become a warrior, a leader and herself.",
+  remember:["Nesta and Cassian are mates; she leads the Valkyries.","The Dread Trove is in Night Court hands, and Nesta can use it.","Koschei is the bigger threat behind Briallyn.","Eris has a secret deal with the Night Court.","Feyre and Rhys have a son, Nyx.","Gwyn has caught Azriel's attention."]},
+ H:{start:"Four weeks after Bryce Quinlan's visit to Prythian (Crescent City: House of Flame and Shadow), the Inner Circle is fractured. Nesta gave Bryce the Mask; Bryce took Azriel's blade Truth-Teller for a time. Nyx is six months old. The book opens with the old bonus chapters, including Azriel's: Rhys forbids him from pursuing Elain because of Lucien.",
+  events:["Azriel's backstory: his father's bastard, kept in the dark, hands burned by his half-brothers, becoming a Shadowsinger.","His spies find Continent factions (Vallahan, Rask, Montesere) hunting a box holding Koschei's death. Whoever holds it controls him.","At a summit in neutral Storr, the Continent refuses Prythian's treaty and all but admits it will march on the human lands once it has Made objects.","At home, Nesta has been cut off from the Trove and the Valkyries. She and Cassian keep fighting. Feyre and Amren clash.","Azriel and Elain are secretly sleeping together. Rhys catches them and takes Azriel off the mission until Elain formally ends things with Lucien.","Nesta nearly drowns trying to winnow to the Prison, and hears a voice: come find me.","Eris tells Cassian Fae sentiment is swinging against the humans. Hybern sends a messenger offering an alliance. Tarquin refuses to help. Feyre suggests Rhys become High King; he refuses.","Rhys asks Vassa about Koschei and floats sending Lucien back toward Autumn to get close to Beron. He doesn't tell Feyre about Elain and Azriel."],
+  end:"Bryaxis attacks Nyx's naming day and Nesta drives it off. Clotho lets Bryaxis live in the library pit. Nesta and Cassian finally reconcile. Lucien walks in on Elain and Azriel, learns Rhys knew, and leaves furious. Rhys gives Nesta back the Trove and agrees to teach her. Nesta calls Elain out; Elain leaves for Vallahan with Mor. Amren pushes Nesta to choose, and Nesta wills herself into the Prison, which takes Gwydion from her. To be continued in A Court of Forgotten Melody.",
+  remember:["Nesta is inside the Prison, which may be a court of its own.","Elain and Mor are on the Continent, in Vallahan.","Lucien has broken with the Night Court; a Blood Duel threat hangs over Azriel.","Koschei's death is in a box everyone is hunting.","Hybern wants an alliance; Tarquin said no; Eris is waiting to strike.","Feyre has a plan she hasn't told Rhys."]}
+};
+
+/* ============ HELPERS ============ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const C=Object.fromEntries(CHARS.map(c=>[c.id,c]));
+const CT=Object.fromEntries(COURTS.map(c=>[c.id,c]));
+const nm=id=>C[id]?.name||FAMX[id]?.name||id;
+const SHORTN={father:"Papa Archeron",bonecarver:"Bone Carver",vallahanking:"Vallahan King",vizier:"Grand Vizier",mistress:"Mistress",hybern:"Hybern King",ladyautumn:"Lady Autumn",suriel:"Suriel",weaver:"Weaver",koschei:"Koschei"};
+const short=id=>{if(SHORTN[id])return SHORTN[id];const n=nm(id);return n.replace(/^(The |Queen |Prince |Lord )/,"").replace(/ of .*$/,"").split(" ")[0]};
+const sw=c=>`<span class="swatch" style="background:${COURTCOL[c]||COURTCOL.other}"></span>`;
+const courtName=c=>({night:"Night Court",spring:"Spring Court",summer:"Summer Court",autumn:"Autumn Court",winter:"Winter Court",day:"Day Court",dawn:"Dawn Court",hybern:"Hybern",human:"Human lands",continent:"The Continent",prison:"The Prison",other:"Elsewhere"})[c]||c;
+const alignPill=a=>`<span class="pill p-${a}">${{good:"Good",grey:"Grey",bad:"Villain"}[a]}</span>`;
+const statusPill=s=>s==="dead"?`<span class="pill p-dead">Deceased</span>`:"";
+const bookTag=b=>b.split(" ").map(x=>BOOKS[x]).join(" · ");
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function charLink(id){return C[id]?`<button class="lnk" data-go="char:${id}">${esc(C[id].name)}</button>`:esc(nm(id))}
+
+/* ============ SPOILER SHIELD ============
+   Level L = reading book L (0 ACOTAR … 5 ACOSH); 6 = show everything.
+   Items from books not started are blurred. Twist-prone details stay blurred until their book is finished.
+   Any detail that names a later book is held back until that book is finished. */
+const MAXL=6;
+const BMENT=[[/A Court of Thorns and Roses|\bACOTAR\b/,0],[/A Court of Mist and Fury|\bACOMAF\b/,1],[/A Court of Wings and Ruin|\bACOWAR\b/,2],[/A Court of Frost and Starlight|\bACOFAS\b/,3],[/A Court of Silver Flames|\bACOSF\b/,4],[/A Court of Splintered Harmony|\bACOSH\b|House of Flame and Shadow|Forgotten Melody/,5]];
+let spLevel=store.get("acotarSpoiler",null);
+const SPK=new Set();
+const PL=()=>spLevel===null?0:spLevel;
+const ALL=()=>PL()>=MAXL;
+const bi=b=>BIDX[b]??0;
+const firstBook=b=>{const xs=String(b||"T").split(" ").map(x=>BIDX[x]).filter(x=>x!==undefined);return xs.length?Math.min(...xs):0};
+const mention=t=>{let m=-1;const s=String(t||"");BMENT.forEach(([re,i])=>{if(i>m&&re.test(s))m=i});return m};
+const later=t=>mention(String(t||"").replace(/A Court of Thorns and Roses|\bACOTAR\b/g,""));
+const hideItem=f=>!ALL()&&f>PL();
+const hideField=r=>!ALL()&&r>=0&&r>=PL();
+/* r = how risky a field is: the later of its own reveal book and any book it names */
+const risk=(text,base)=>Math.max(base??-1,later(text));
+function sp(hide,key,html,tag){if(!hide||SPK.has(key))return html;tag=tag||"span";return `<${tag} class="sp-hidden" data-spk="${key}" title="Spoiler: tap to reveal">${html}</${tag}>`}
+const LVLAB=["Reading ACOTAR","Finished ACOTAR","Finished ACOMAF","Finished ACOWAR","Finished ACOFAS","Finished ACOSF","Showing everything"];
+function spStrip(){$("#sp-strip").innerHTML=ALL()?`<span>Spoilers: <b>${LVLAB[MAXL]}</b></span><button class="lnk" data-open-sp>Change</button>`:`<span>Spoilers: <b>${LVLAB[PL()]}</b>. Blurred items are from books you haven't finished. Tap one to peek.</span><button class="lnk" data-open-sp>Change</button>`;
+ document.querySelectorAll("#spd-opts [data-lv]").forEach(b=>b.classList.toggle("cur",+b.dataset.lv===PL()))}
+document.addEventListener("click",e=>{const el=e.target.closest(".sp-hidden");if(!el)return;e.preventDefault();e.stopPropagation();
+ const k=el.dataset.spk;SPK.add(k);el.classList.remove("sp-hidden");el.querySelectorAll(".sp-hidden").forEach(c=>{SPK.add(c.dataset.spk);c.classList.remove("sp-hidden")});
+ document.querySelectorAll(`[data-sp-for="${k}"]`).forEach(n=>n.remove())},true);
+document.addEventListener("click",e=>{const r=e.target.closest("[data-reveal]");if(!r)return;const t=document.querySelector(`[data-spk="${r.dataset.reveal}"]`);if(t)t.click()});
+const spd=document.getElementById("spd");
+function openSp(){if(typeof spd.showModal==="function")spd.showModal();else spd.setAttribute("open","")}
+function closeSp(){if(spd.open){typeof spd.close==="function"?spd.close():spd.removeAttribute("open")}}
+document.addEventListener("click",e=>{if(e.target.closest("#sp-open,[data-open-sp]"))openSp()});
+document.getElementById("spd-opts").addEventListener("click",e=>{const b=e.target.closest("[data-lv]");if(!b)return;spLevel=+b.dataset.lv;store.set("acotarSpoiler",spLevel);SPK.clear();closeSp();spStrip();show(current)});
+spd.addEventListener("cancel",()=>{if(spLevel===null){spLevel=0;store.set("acotarSpoiler",0);spStrip()}});
+function coverStage(key,what){if(ALL()||SPK.has(key))return;const s=document.querySelector("#view .split");if(!s)return;s.classList.add("sp-hidden");s.dataset.spk=key;
+ s.insertAdjacentHTML("beforebegin",`<div class="sp-note" data-sp-for="${key}"><span>This ${what} draws relationships from <b>every book</b>, so it may spoil twists you haven't reached.</span><button class="chip" type="button" data-reveal="${key}">Show it anyway</button></div>`)}
+
+/* ============ AFFILIATE SETTINGS ============
+   Paste your Amazon Associates tracking ID between the quotes (e.g. "readersatlas-22").
+   Every "Buy the book" link updates automatically. Leave blank until approved. */
+const AMAZON_TAG="";
+const affUrl=title=>"https://www.amazon.com.au/s?k="+encodeURIComponent("Sarah J. Maas "+title)+(AMAZON_TAG?"&tag="+encodeURIComponent(AMAZON_TAG):"");
+const affRel="noopener"+(AMAZON_TAG?" sponsored":"");
+const CART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
+$("#buyrow").innerHTML=BOOKLIST.map(b=>`<a class="buy" href="${affUrl(b.title)}" target="_blank" rel="${affRel}"><b>${esc(b.title)}</b><span>Book ${b.n} · Buy the book</span></a>`).join("")+`<a class="buy" href="${affUrl(UPCOMING.title)}" target="_blank" rel="${affRel}"><b>${esc(UPCOMING.title)}</b><span>Book 7 · Pre-order</span></a>`;
+
+/* ============ TABS ============ */
+const TABS=[["books","Book Guide"],["characters","Characters"],["courts","Courts"],["world","Eras & Velaris"],["recaps","Recaps"],["family","Family Tree"],["map","Connections Map"]];
+const TSHORT={books:"Books",characters:"Cast",courts:"Courts",world:"World",recaps:"Recaps",family:"Family",map:"Map"};
+let current=store.get("acotarTab","books");
+if(location.hash&&TABS.some(t=>t[0]===location.hash.slice(1)))current=location.hash.slice(1);
+if(!TABS.some(t=>t[0]===current))current="books";
+const TICON={
+ books:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+ characters:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+ courts:'<path d="M3 9l9-6 9 6"/><path d="M5 9v10M19 9v10M9 9v10M15 9v10M3 21h18"/>',
+ world:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><path d="M17 3l.7 1.6L19.3 5.3 17.7 6 17 7.6 16.3 6 14.7 5.3 16.3 4.6z"/>',
+ recaps:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
+ family:'<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5V12M5 16.5V12h14v4.5"/>',
+ map:'<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="9" cy="18" r="2.5"/><path d="M8.5 6.2 15.5 7.6M6.6 8.4 8.4 15.6M16.6 10.1 10.6 16.2"/>'};
+function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button role="tab" aria-selected="${k===current}" data-tab="${k}" aria-label="${l}"><svg class="tabicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TICON[k]}</svg><span class="tl-l">${l}</span><span class="ts">${TSHORT[k]}</span></button>`).join("")}
+let lastW=innerWidth;
+addEventListener("resize",()=>{clearTimeout(window._rz);window._rz=setTimeout(()=>{if(Math.abs(innerWidth-lastW)<40)return;lastW=innerWidth;if(current==="family")renderFamily();if(current==="map")renderMap()},250)});
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)show(b.dataset.tab)});
+function show(t,after){current=t;store.set("acotarTab",t);renderTabs();({books:renderBooks,characters:renderChars,courts:renderCourts,world:renderWorld,recaps:renderRecaps,family:renderFamily,map:renderMap})[t]();window.scrollTo({top:0});if(after)requestAnimationFrame(after)}
+function flash(el){if(!el)return;el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});el.classList.add("flash");setTimeout(()=>el.classList.remove("flash"),2200)}
+
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;go(b.dataset.go)});
+function go(ref){const i=ref.indexOf(":"),k=ref.slice(0,i),id=ref.slice(i+1);
+ if(k==="char"){Object.assign(charState,{q:"",align:"all"});show("characters",()=>flash(document.getElementById("c-"+id)))}
+ else if(k==="book"){show("books",()=>flash(document.getElementById("b-"+id)))}
+ else if(k==="court"){courtState.q="";courtState.view="courts";show("courts",()=>flash(document.getElementById("ct-"+id)))}
+ else if(k==="world"){show("world",()=>{const el=document.getElementById(id);if(el&&el.dataset.pl)selectPlace(el.dataset.pl);flash(el)})}
+ else if(k==="recap"){recapBook=id;show("recaps")}
+ else if(k==="fam"){famFocus=id;show("family")}
+ else if(k==="map"){mapFocus=id;show("map")}}
+
+/* ============ BOOK GUIDE ============ */
+function renderBooks(){
+ const v=$("#view");
+ const order=BOOKLIST.map((b,i)=>`<li><span class="n">Read ${["1st","2nd","3rd","4th","5th","7th"][i]}</span><b>${esc(b.title)}</b>${b.abbr} · ${b.year}</li>`);
+ order.splice(5,0,`<li class="opt"><span class="n">Optional 6th</span><b>Crescent City 1–3</b>Book 3, House of Flame and Shadow, crosses into Prythian. ACOSH recaps it, so you can skip it.</li>`);
+ order.push(`<li class="soon"><span class="n">Coming next</span><b>${esc(UPCOMING.title)}</b>${UPCOMING.date}</li>`);
+ v.innerHTML=`<p class="eyebrow">Start here</p><h2>Book Guide</h2>
+ <p class="lede">Every book in the series, in reading order, with the setup and who you'll meet. Premises only: full plots live in the Recaps tab.</p>
+ <ol class="order">${order.join("")}</ol>
+ <div class="grid wide">${BOOKLIST.map(b=>{const f=bi(b.c),key="bk-"+b.c;
+  const body=`<p class="eyebrow">Book ${b.n} · ${b.year} · POV: ${esc(b.pov)}</p><h3>${esc(b.title)}</h3><p class="bk-plot">${esc(b.plot)}</p><span class="lbl" style="margin-top:10px">Main characters</span><div class="castlist">${b.cast.map(charLink).join("")}</div>`;
+  return `<article class="card" id="b-${b.c}"><div class="bookcard"><div class="spine" style="background:${b.col}"><span>${b.abbr}</span></div><div>${sp(hideItem(f)||(f>0&&hideField(f-1)),key,body,"div")}
+  <div class="bk-actions"><a class="buybtn" href="${affUrl(b.title)}" target="_blank" rel="${affRel}">${CART}Buy the book</a><button class="buybtn ghost" data-go="recap:${b.c}">Recap</button></div></div></div></article>`}).join("")}
+ <article class="card" id="b-next"><div class="bookcard"><div class="spine" style="background:#55305e"><span>${UPCOMING.abbr}</span></div><div><p class="eyebrow">Book 7 · ${UPCOMING.date}</p><h3>${esc(UPCOMING.title)}</h3><p class="bk-plot">${esc(UPCOMING.note)}</p><div class="bk-actions"><a class="buybtn" href="${affUrl(UPCOMING.title)}" target="_blank" rel="${affRel}">${CART}Pre-order</a></div></div></div></article></div>`;
+}
+
+/* ============ CHARACTERS ============ */
+const charState=Object.assign({q:"",group:"court",align:"all"},store.get("acotarChars",{}));
+function charCard(c){
+ const f=firstBook(c.books),key="c-"+c.id;
+ const rv=Math.max(f,c.rev?bi(c.rev):f);
+ const featR=risk(c.feat+" "+c.type,c.tw??-1),loveR=risk(c.love,c.loveB?bi(c.loveB):f),deathR=risk(c.death,c.deathB?bi(c.deathB):f),agR=risk(c.agenda,rv),ageR=risk(c.age,-1);
+ const deadHide=c.status==="dead"&&hideField(deathR);
+ const inner=`<div class="card-top"><div><h3>${esc(c.name)}</h3><div class="aka">${sp(!!c.akaB&&hideField(bi(c.akaB)),key+"-ak",esc(c.aka))}</div></div><div class="pills">${sp(hideField(rv),key+"-al",alignPill(c.align))}${c.status==="dead"?sp(deadHide,key+"-st",statusPill(c.status)):""}</div></div>
+ <dl class="kv">${PRON[c.id]&&PRON[c.id]!=="—"?`<dt>Say it</dt><dd style="font-family:var(--mono);font-size:.85rem">${esc(PRON[c.id])}</dd>`:""}<dt>Court</dt><dd>${sw(c.court)}${CT[c.court]?`<button class="lnk" data-go="court:${c.court}">${courtName(c.court)}</button>`:courtName(c.court)}</dd>
+ <dt>Type</dt><dd>${sp(hideField(risk(c.type,c.tw??-1)),key+"-ty",esc(c.type))}</dd>
+ <dt>Features</dt><dd>${sp(hideField(featR),key+"-ft",esc(c.feat))}</dd>
+ ${c.love?`<dt>Love / mate</dt><dd>${sp(hideField(loveR),key+"-lv",esc(c.love))}</dd>`:""}
+ <dt>Age</dt><dd>${sp(hideField(ageR),key+"-ag",esc(c.age))}</dd></dl>
+ ${c.death?`<div class="death"><b class="lbl">${c.status==="dead"?"Death":"Close call"}</b>${sp(hideField(deathR),key+"-dt",esc(c.death))}</div>`:""}
+ ${c.agenda?`<div class="agenda"><b>Agenda</b>${sp(hideField(agR),key+"-ad",esc(c.agenda))}</div>`:""}
+ <div class="links">${FAMILIES.some(fm=>fm.gens.flat().includes(c.id))?`<button class="lnk" data-go="fam:${c.id}">Family tree</button> · `:""}${EDGES.some(e=>e[0]===c.id||e[1]===c.id)?`<button class="lnk" data-go="map:${c.id}">Connections</button>`:""}</div>
+ <div class="books">First appears: ${esc(bookTag(c.books))}</div>`;
+ return `<article class="card" id="${key}">${hideItem(f)?sp(true,key,inner,"div"):inner}</article>`}
+function renderChars(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Who's who in Prythian</p><h2>Characters</h2>
+ <p class="lede">Everyone who matters, with how to say their name, their type, looks and powers, love interest or mate, rough age, side, fate and what they want. Feyre and Rhysand's pronunciations come from Sarah J. Maas; the rest are the common fan readings.</p>
+ <div class="controls"><input type="search" id="cq" placeholder="Search names, powers, mates…" value="${esc(charState.q)}" aria-label="Search characters">
+ <select id="cg" aria-label="Group characters"><option value="court">Group by court</option><option value="kind">Group by type</option><option value="align">Group by side</option><option value="none">No grouping</option></select>
+ ${["all","good","grey","bad"].map(a=>`<button class="chip" data-al="${a}" aria-pressed="${charState.align===a}">${{all:"All",good:"Good",grey:"Grey",bad:"Villains"}[a]}</button>`).join("")}<span class="count" id="ccount"></span></div><div id="clist"></div>`;
+ $("#cg").value=charState.group;
+ const draw=()=>{store.set("acotarChars",{group:charState.group});
+  const q=charState.q.trim().toLowerCase();
+  let list=CHARS.filter(c=>(charState.align==="all"||(c.align===charState.align&&!hideField(Math.max(firstBook(c.books),c.rev?bi(c.rev):0))))&&(!q||[c.name,c.aka,c.type,c.feat,c.love,c.agenda,courtName(c.court)].join(" ").toLowerCase().includes(q)));
+  $("#ccount").textContent=`${list.length} of ${CHARS.length}`;
+  if(!list.length){$("#clist").innerHTML=`<p class="empty">No one matches that.</p>`;return}
+  const g=charState.group;
+  if(g==="none"){$("#clist").innerHTML=`<div class="grid">${list.map(charCard).join("")}</div>`;return}
+  const keyOf=c=>g==="court"?c.court:g==="kind"?c.kind:(hideField(Math.max(firstBook(c.books),c.rev?bi(c.rev):0))?"unknown":c.align);
+  const orderK=g==="court"?Object.keys(COURTCOL):g==="kind"?["High Fae","Illyrian","Made","Human","Lesser Fae","Ancient","Creature","Other"]:["good","grey","bad","unknown"];
+  const label=k=>g==="court"?`${sw(k)}${courtName(k)}`:g==="align"?({good:"Good",grey:"Grey / complicated",bad:"Villains",unknown:"Not revealed yet"})[k]:({Made:"Made by magic"})[k]||k;
+  $("#clist").innerHTML=orderK.map(k=>{const xs=list.filter(c=>keyOf(c)===k);return xs.length?`<div class="group-h"><h3>${label(k)}</h3><span>${xs.length}</span></div><div class="grid">${xs.map(charCard).join("")}</div>`:""}).join("")};
+ draw();
+ $("#cq").addEventListener("input",e=>{charState.q=e.target.value;draw()});
+ $("#cg").addEventListener("change",e=>{charState.group=e.target.value;draw()});
+ v.querySelectorAll("[data-al]").forEach(b=>b.addEventListener("click",()=>{charState.align=b.dataset.al;v.querySelectorAll("[data-al]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
+}
+
+/* ============ COURTS ============ */
+const courtState={q:"",view:"courts"};
+function courtCard(ct){
+ const f=bi(ct.b),key="ct-"+ct.id;
+ const pos=ct.pos.map(([role,id,b],i)=>`<li><span>${esc(role)}</span><span>${sp(bi(b)>f&&hideField(bi(b)),key+"-p"+i,C[id]?charLink(id):esc(id))}</span></li>`).join("");
+ const members=CHARS.filter(c=>c.court===ct.id);
+ const inner=`<div class="card-top"><div class="court-h"><span class="court-dot" style="background:${COURTCOL[ct.id]}"></span><div><h3>${esc(ct.name)}</h3><div class="aka">${esc(ct.kind)} · ${sp(!!ct.seatB&&hideField(bi(ct.seatB)),key+"-s",esc(ct.seat))}</div></div></div></div>
+ <span class="lbl" style="margin-top:8px">Positions</span><ul class="pos">${pos}</ul>
+ <span class="lbl" style="margin-top:12px">Features</span><p style="margin:2px 0 0;font-size:.93rem">${sp(hideField(risk(ct.feat,ct.featB?bi(ct.featB):-1)),key+"-f",esc(ct.feat))}</p>
+ ${members.length?`<span class="lbl" style="margin-top:12px">Who's from here</span><div class="castlist">${members.map(c=>sp(hideItem(firstBook(c.books)),key+"-m"+c.id,charLink(c.id))).join("")}</div>`:""}
+ <div class="war"><b class="lbl">How the war hits this court</b>${sp(hideField(risk(ct.war,bi(ct.warB))),key+"-w",esc(ct.war))}</div>`;
+ return `<article class="card" id="${key}">${hideItem(f)?sp(true,key,inner,"div"):inner}</article>`}
+function renderCourts(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Seven courts and beyond</p><h2>Courts</h2>
+ <p class="lede">Prythian has seven courts: four seasonal (Spring, Summer, Autumn, Winter) and three solar (Dawn, Day, Night). Search them, or switch to people grouped by court.</p>
+ <div class="controls"><input type="search" id="kq" placeholder="Search courts, positions, people…" value="${esc(courtState.q)}" aria-label="Search courts">
+ <button class="chip" data-cv="courts" aria-pressed="${courtState.view==="courts"}">Courts</button><button class="chip" data-cv="people" aria-pressed="${courtState.view==="people"}">People by court</button><span class="count" id="kcount"></span></div><div id="klist"></div>`;
+ const draw=()=>{const q=courtState.q.trim().toLowerCase();
+  if(courtState.view==="courts"){
+   const list=COURTS.filter(ct=>!q||[ct.name,ct.kind,ct.seat,ct.feat,ct.war,ct.pos.map(p=>p[0]+" "+nm(p[1])).join(" "),CHARS.filter(c=>c.court===ct.id).map(c=>c.name).join(" ")].join(" ").toLowerCase().includes(q));
+   $("#kcount").textContent=`${list.length} of ${COURTS.length}`;
+   $("#klist").innerHTML=list.length?`<div class="grid wide">${list.map(courtCard).join("")}</div>`:`<p class="empty">No court matches that.</p>`}
+  else{
+   const list=CHARS.filter(c=>!q||[c.name,c.aka,courtName(c.court),c.type].join(" ").toLowerCase().includes(q));
+   $("#kcount").textContent=`${list.length} people`;
+   $("#klist").innerHTML=Object.keys(COURTCOL).map(k=>{const xs=list.filter(c=>c.court===k);return xs.length?`<div class="group-h"><h3>${sw(k)}${courtName(k)}</h3><span>${xs.length}</span></div><div class="grid">${xs.map(charCard).join("")}</div>`:""}).join("")||`<p class="empty">No one matches that.</p>`}};
+ draw();
+ $("#kq").addEventListener("input",e=>{courtState.q=e.target.value;draw()});
+ v.querySelectorAll("[data-cv]").forEach(b=>b.addEventListener("click",()=>{courtState.view=b.dataset.cv;v.querySelectorAll("[data-cv]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
+}
+
+/* ============ ERAS, TIMELINE & VELARIS ============ */
+let placeSel=null;
+function selectPlace(id){placeSel=id;document.querySelectorAll("[data-pl]").forEach(n=>n.classList.toggle("on",n.dataset.pl===id))}
+function renderWorld(){
+ const v=$("#view");
+ const eras=ERAS.map(e=>`<div class="era" id="${e.id}"><div class="when">${esc(e.when)}</div><h3>${esc(e.t)}</h3>${sp(hideItem(bi(e.b))||hideField(later(e.d)),e.id,`<p style="margin:2px 0 0;color:var(--muted)">${esc(e.d)}</p>`,"div")}</div>`).join("");
+ const tl=TIMELINE.map(([w,t,d,b,isB],i)=>{const r=bi(b),hid=isB?hideItem(r):hideField(r)||hideField(later(d));return`<li id="tl-${i}" class="${isB?"bk":""}"><div class="when">${esc(w)}</div>${sp(hid,"tl-"+i,`<b>${esc(t)}</b><p>${esc(d)}</p>`,"div")}</li>`}).join("");
+ const regs=REGIONS.map(r=>`<path class="reg" data-court="${r.id}" d="${r.d}" fill="${COURTCOL[r.id]}" style="opacity:.78"/>`).join("")+REGIONS.map(r=>`<text x="${r.lx}" y="${r.ly}" text-anchor="middle" style="fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.45);stroke-width:3px">${esc(r.label)}</text>`).join("");
+ const pins=PLACES.map((p,i)=>`<g class="pin" data-pl="${p.id}" tabindex="0" role="button" aria-label="${esc(p.name)}"><circle cx="${p.x}" cy="${p.y}" r="7"/><text x="${p.x}" y="${p.y+4}" text-anchor="middle" style="font-family:var(--mono);font-size:9px;fill:#fff">${i+1}</text></g>`).join("");
+ v.innerHTML=`<p class="eyebrow">History, timeline and the City of Starlight</p><h2>Eras &amp; Velaris</h2>
+ <p class="lede">The big eras of Prythian's history, a timeline of the series, a schematic map of the courts, and a guide to Velaris.</p>
+ <h3 class="sec-h">The eras</h3><div class="eras">${eras}</div>
+ <h3 class="sec-h">Timeline</h3><ol class="tl">${tl}</ol>
+ <h3 class="sec-h">Prythian at a glance</h3>
+ <p class="note">Fan-made schematic, not to scale and not the official map. It shows roughly where the courts sit relative to one another. Tap a court to open it.</p>
+ <div class="mapsvg" style="max-width:720px"><svg viewBox="0 0 680 460" role="img" aria-label="Schematic map of Prythian's courts">
+  <rect class="sea" width="680" height="460"/>
+  <text x="40" y="30" class="sm">Sea</text>
+  <path class="land" d="M20 140 L80 110 L95 170 L60 230 L18 210 Z"/><text x="56" y="175" text-anchor="middle">Hybern</text>
+  <path class="land" d="M70 40 L110 34 L118 70 L80 76 Z"/><text x="94" y="92" text-anchor="middle" class="sm">The Prison</text>
+  ${regs}
+  <path class="land" d="M600 250 L670 230 L675 440 L605 440 Z"/><text x="638" y="340" text-anchor="middle" transform="rotate(-90 638 340)">The Continent</text>
+  <path d="M90 352 L560 322" stroke="var(--bronze)" stroke-width="2.5" stroke-dasharray="7 5" fill="none"/><text x="470" y="346" class="sm">the old Wall</text>
+ </svg></div>
+ <h3 class="sec-h">Velaris, the City of Starlight</h3>
+ ${sp(hideItem(1),"velaris",`<p class="lede">The Night Court's hidden capital, kept secret from the rest of Prythian for millennia. Rhys gave nearly fifty years of his freedom to keep Amarantha from finding it. Built along the river Sidra where it meets the sea, ringed by mountains, it's a city of artists, music, food and starlight, where the people get to live safely. The Night Court celebrates Starfall here each year. Hybern's attacks in ACOMAF and ACOWAR left scars the city is still rebuilding.</p>
+ <div class="mapwrap"><div class="mapsvg"><svg viewBox="0 0 620 300" role="img" aria-label="Schematic map of Velaris">
+  <rect class="sea" width="620" height="300"/>
+  <path d="M380 0 L620 0 L620 120 L540 130 L470 105 L420 55 Z" style="fill:var(--sunk);stroke:var(--line)"/><text x="560" y="40" text-anchor="middle" class="sm">mountains</text>
+  <path d="M0 0 L120 0 L80 60 L0 80 Z" style="fill:var(--sunk);stroke:var(--line)"/>
+  <path class="river" d="M0 215 C120 195 220 230 330 205 S500 230 620 245"/>
+  <rect x="540" y="230" width="80" height="70" style="fill:var(--accent);opacity:.15"/>
+  ${pins}
+ </svg></div>
+ <div class="places">${PLACES.map((p,i)=>`<button class="place" id="${p.id}" data-pl="${p.id}"><span class="n">${i+1}</span><b>${esc(p.name)}</b>${sp(hideField(Math.max(bi(p.b),later(p.d)))&&bi(p.b)>1,p.id+"-d",`<br><span style="color:var(--muted)">${esc(p.d)}</span>`)}</button>`).join("")}</div></div>`,"div")}
+ <p class="note" style="margin-top:12px">Velaris map is a fan-made schematic; positions are approximate.</p>`;
+ v.querySelectorAll(".reg").forEach(r=>r.addEventListener("click",()=>go("court:"+r.dataset.court)));
+ v.querySelectorAll("[data-pl]").forEach(n=>{n.addEventListener("click",()=>{selectPlace(n.dataset.pl);if(n.tagName!=="BUTTON")flash(document.getElementById(n.dataset.pl))});
+  n.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();n.dispatchEvent(new Event("click"))}})});
+ if(placeSel)selectPlace(placeSel);
+}
+
+/* ============ RECAPS ============ */
+let recapBook=store.get("acotarRecap","T");
+function renderRecaps(){
+ const v=$("#view");store.set("acotarRecap",recapBook);
+ const b=BOOKLIST.find(x=>x.c===recapBook)||BOOKLIST[0],r=RECAPS[b.c],idx=bi(b.c),key="rc-"+b.c;
+ const body=`<p class="eyebrow">Book ${b.n} · ${b.year}</p><h3>${esc(b.title)}</h3>
+  <h4>Where it starts</h4><p>${esc(r.start)}</p>
+  <h4>What happens</h4><ul>${r.events.map(e=>`<li>${esc(e)}</li>`).join("")}</ul>
+  <h4>How it ends</h4><p>${esc(r.end)}</p>
+  <div class="remember"><h4>Remember this going into the next book</h4><ul>${r.remember.map(e=>`<li>${esc(e)}</li>`).join("")}</ul></div>`;
+ const hid=hideField(idx);
+ v.innerHTML=`<p class="eyebrow">Previously in Prythian</p><h2>Book Recaps</h2>
+ <p class="lede">Full-spoiler summaries for when you've forgotten everything before the next release. Pick the book you just finished.</p>
+ <div class="controls">${BOOKLIST.map(x=>`<button class="chip" data-rb="${x.c}" aria-pressed="${x.c===b.c}">${x.abbr}</button>`).join("")}</div>
+ ${hid&&!SPK.has(key)?`<div class="sp-note" data-sp-for="${key}"><span>This recap spoils <b>all of ${esc(b.abbr)}</b>, which you haven't finished.</span><button class="chip" type="button" data-reveal="${key}">Show it anyway</button></div>`:""}
+ <article class="card recap">${sp(hid,key,body,"div")}</article>
+ <p class="links">${idx>0?`<button class="lnk" data-rb="${BOOKLIST[idx-1].c}">← ${BOOKLIST[idx-1].abbr}</button>`:""}${idx<BOOKLIST.length-1?` &nbsp; <button class="lnk" data-rb="${BOOKLIST[idx+1].c}">${BOOKLIST[idx+1].abbr} →</button>`:""} · <a class="lnk" href="${affUrl(b.title)}" target="_blank" rel="${affRel}">Buy ${esc(b.abbr)}</a></p>`;
+ v.querySelectorAll("[data-rb]").forEach(x=>x.addEventListener("click",()=>{recapBook=x.dataset.rb;renderRecaps();window.scrollTo({top:0})}));
+}
+
+/* ============ FAMILY TREE ============ */
+let famFocus=null;
+function famInfo(id){const c=C[id];if(c)return{name:c.name,sub:c.aka.split(" · ")[0],dead:c.status==="dead",align:c.align};const x=FAMX[id];return{name:x?.name||id,sub:x?.note||"",dead:!!x?.dead}}
+function renderFamily(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Bloodlines &amp; bonds</p><h2>Family Tree</h2>
+ <p class="lede">Tap anyone to focus their family: relatives light up and everyone else fades. Tap again or choose another name to switch.</p>
+ <div class="legend"><span><i style="background:var(--fam)"></i>Parent / child</span><span><i style="background:var(--love)"></i>Mate, spouse or lover</span><span><i style="background:var(--ally);opacity:.8"></i>Sibling / cousin</span></div>
+ <div class="split"><div class="stage" id="fstage"></div><aside class="panel" id="fpanel"></aside></div>`;
+ const cw=$("#fstage").clientWidth||760,narrow=cw<700;
+ const colGap=narrow?118:150,boxW=narrow?110:136,boxH=46;
+ const maxGen=Math.max(...FAMILIES.flatMap(f=>f.gens.map(g=>g.length)));
+ const W=Math.max(narrow?cw:760,maxGen*colGap+32);
+ const nameFit=id=>{const n=famInfo(id).name.replace(/^(Queen|Prince|Lord) /,"").replace(/ \(.*\)/,"");return n.length*7.2>boxW-8?n.split(" ")[0]:n};
+ const subMax=Math.floor(boxW/6.1);
+ let y=20,parts=[],nodes={},edges=[];
+ FAMILIES.forEach(f=>{
+  parts.push(`<text x="16" y="${y+14}" style="font-family:var(--display);font-size:16px;fill:var(--bronze)">${esc(f.name)}</text>`);y+=30;
+  f.gens.forEach(gen=>{const total=gen.length*colGap;const x0=Math.max(16,(W-total)/2);
+   gen.forEach((id,i)=>{nodes[id]={x:x0+i*colGap+(colGap-boxW)/2,y,fam:f.name}});y+=boxH+40});
+  (f.links||[]).forEach(l=>edges.push([...l,"fam"]));(f.spouse||[]).forEach(l=>edges.push([...l,"love"]));
+  (f.sib||[]).forEach(l=>edges.push([...l,"ally"]));y+=10});
+ // cross-tree bonds shown in the panel only
+ [["elain","lucien","love","Mate"],["amren","rhys","ally","His Second"],["mor","rhys","ally","Cousin"],["cassian","rhys","ally","Brother by choice"],["azriel","rhys","ally","Brother by choice"]].forEach(e=>edges.push(e));
+ const H=y;
+ const adj={};edges.forEach(([a,b])=>{(adj[a]??=new Set).add(b);(adj[b]??=new Set).add(a)});
+ const parents={};edges.filter(e=>e[2]==="fam").forEach(([p,c])=>(parents[c]??=[]).push(p));
+ Object.keys(parents).forEach(c=>Object.keys(parents).forEach(d=>{if(c!==d&&parents[c].some(p=>parents[d].includes(p)))adj[c].add(d)}));
+ const path=(a,b,t,x)=>{const A=nodes[a],B=nodes[b];if(!A||!B||x||A.fam!==B.fam)return"";
+  const ax=A.x+boxW/2,bx=B.x+boxW/2;
+  if(t==="fam")return`M${ax},${A.y+boxH} C${ax},${A.y+boxH+22} ${bx},${B.y-22} ${bx},${B.y}`;
+  const [L,R]=A.x<B.x?[A,B]:[B,A];
+  if(Math.abs(L.y-R.y)<2&&R.x-L.x>colGap+1)return`M${L.x+boxW/2},${L.y} C${L.x+boxW/2},${L.y-22} ${R.x+boxW/2},${R.y-22} ${R.x+boxW/2},${R.y}`;
+  return`M${L.x+boxW},${L.y+boxH/2} L${R.x},${R.y+boxH/2}`};
+ const edgeSvg=edges.map(([a,b,t,x])=>{const d=path(a,b,t,x);return d?`<path class="edge" data-a="${a}" data-b="${b}" d="${d}" stroke="var(--${t})" ${t!=="fam"?'stroke-dasharray="5 4"':""}/>`:""}).join("");
+ const nodeSvg=Object.entries(nodes).map(([id,n])=>{const i=famInfo(id);return`<g class="node ${i.dead?"dead":""}" data-id="${id}" tabindex="0" role="button" aria-label="${esc(i.name)}" transform="translate(${n.x},${n.y})"><rect width="${boxW}" height="${boxH}" rx="5"/><text x="${boxW/2}" y="19" text-anchor="middle" style="font-weight:700;font-size:13px">${esc(nameFit(id))}</text><text x="${boxW/2}" y="35" text-anchor="middle" style="font-size:11px;fill:var(--muted)">${esc(((i.dead?"† ":"")+i.sub).slice(0,subMax))}</text></g>`}).join("");
+ $("#fstage").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Family tree">${parts.join("")}${edgeSvg}${nodeSvg}</svg>`;
+ const panel=$("#fpanel");
+ function focus(id){famFocus=id;
+  const svg=$("#fstage svg");svg.querySelectorAll(".node").forEach(g=>{const k=g.dataset.id;g.classList.toggle("focus",k===id);g.classList.toggle("near",!!id&&!!adj[id]?.has(k));g.classList.toggle("dim",!!id&&k!==id&&!adj[id]?.has(k))});
+  svg.querySelectorAll(".edge").forEach(e=>e.classList.toggle("dim",!!id&&e.dataset.a!==id&&e.dataset.b!==id));
+  panel.classList.toggle("idle",!id);
+  if(!id){panel.innerHTML=`<p class="eyebrow">No one selected</p><p style="margin:6px 0 0;color:var(--muted)">Pick a name in the tree to see their parents, children, siblings and partners.</p>`;return}
+  const i=famInfo(id),c=C[id];
+  const rel=edges.filter(e=>e[0]===id||e[1]===id).map(([a,b,t,x])=>{const o=a===id?b:a;const lbl=x||(t==="love"?"Partner / mate":t==="ally"?"Sibling / cousin":(a===id?"Child":"Parent"));return`<li><span class="eyebrow" style="display:inline-block;min-width:110px">${lbl}</span>${nodes[o]?`<button class="lnk" data-ff="${o}">${esc(nm(o))}</button>`:C[o]?charLink(o):esc(nm(o))}</li>`});
+  const sibs=[...(adj[id]||[])].filter(o=>parents[id]&&parents[o]&&parents[id].some(p=>parents[o].includes(p))).map(o=>`<li><span class="eyebrow" style="display:inline-block;min-width:110px">Sibling</span><button class="lnk" data-ff="${o}">${esc(nm(o))}</button></li>`);
+  panel.innerHTML=`<button class="sheet-close" data-close>Close</button><p class="eyebrow">Focused</p><h3>${esc(i.name)}</h3>${c?`<div class="pills" style="justify-content:flex-start;margin-top:6px">${alignPill(c.align)}${statusPill(c.status)}</div>`:""}<p style="margin:8px 0 0;color:var(--muted);font-size:.92rem">${esc(c?c.conn:i.sub)}</p><ul>${rel.join("")}${sibs.join("")}</ul>${c?`<p style="margin-top:12px"><button class="lnk" data-go="char:${id}">Full profile</button> · <button class="lnk" data-go="map:${id}">Connections map</button></p>`:""}`}
+ $("#fstage").addEventListener("click",e=>{const g=e.target.closest(".node");focus(g&&g.dataset.id!==famFocus?g.dataset.id:null)});
+ $("#fstage").addEventListener("keydown",e=>{const g=e.target.closest(".node");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();focus(g.dataset.id===famFocus?null:g.dataset.id)}});
+ panel.addEventListener("click",e=>{if(e.target.closest("[data-close]"))return focus(null);const b=e.target.closest("[data-ff]");if(b){focus(b.dataset.ff);$(`#fstage .node[data-id="${b.dataset.ff}"]`)?.scrollIntoView({block:"center",inline:"center",behavior:"smooth"})}});
+ const start=famFocus&&nodes[famFocus]?famFocus:(narrow?null:"feyre");
+ focus(start);
+ if(start)requestAnimationFrame(()=>$(`#fstage .node[data-id="${start}"]`)?.scrollIntoView({block:"nearest",inline:"center"}));
+ coverStage("cover-family","family tree");
+}
+
+/* ============ CONNECTIONS MAP ============ */
+let mapFocus=null;
+const mapState={court:"all"};
+function layout(nodes,links,W,H,narrow){
+ const REP=narrow?2600:5600,LEN=narrow?80:115,PADX=narrow?44:62;
+ const P={};nodes.forEach((n,i)=>{const a=i/nodes.length*Math.PI*2;P[n]={x:W/2+Math.cos(a)*W*.35,y:H/2+Math.sin(a)*H*.35,vx:0,vy:0}});
+ if(P.feyre){P.feyre.x=W/2;P.feyre.y=H/2}
+ for(let it=0;it<420;it++){const t=1-it/420;
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=P[nodes[i]],b=P[nodes[j]];let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01,d=Math.sqrt(d2),f=REP/d2;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f}
+  links.forEach(([s,tg])=>{const a=P[s],b=P[tg];if(!a||!b)return;let dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)+.01,f=(d-LEN)*.02;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f});
+  nodes.forEach(n=>{const p=P[n];p.vx+=(W/2-p.x)*.004;p.vy+=(H/2-p.y)*.004;p.x+=p.vx*t*.5;p.y+=p.vy*t*.5;p.vx*=.6;p.vy*=.6;p.x=Math.max(PADX,Math.min(W-PADX,p.x));p.y=Math.max(30,Math.min(H-30,p.y))})}
+ return P}
+function renderMap(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Who is tied to whom</p><h2>Connections Map</h2>
+ <p class="lede">Tap a person to light up everyone they're connected to and see how. Filter by court to cut the web down.</p>
+ <div class="controls"><select id="mpick" aria-label="Focus a character"><option value="">Focus a character…</option>${CHARS.filter(c=>EDGES.some(e=>e[0]===c.id||e[1]===c.id)).sort((a,b)=>a.name.localeCompare(b.name)).map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select>
+ <select id="mcourt" aria-label="Filter by court"><option value="all">All courts</option>${Object.keys(COURTCOL).filter(k=>CHARS.some(c=>c.court===k)).map(k=>`<option value="${k}">${courtName(k)} and their ties</option>`).join("")}</select></div>
+ <div class="legend"><span><i style="background:var(--fam)"></i>Family</span><span><i style="background:var(--love)"></i>Mates &amp; romance</span><span><i style="background:var(--friend)"></i>Friends</span><span><i style="background:var(--ally)"></i>Allies</span><span><i style="background:var(--foe)"></i>Enemies</span></div>
+ <div class="split"><div class="stage" id="mstage"></div><aside class="panel" id="mpanel"></aside></div>`;
+ $("#mcourt").value=mapState.court;
+ const cw=$("#mstage").clientWidth||980,narrow=cw<700;
+ let links=EDGES.map(e=>[...e]);
+ if(mapState.court!=="all"){const inC=id=>C[id]?.court===mapState.court;links=links.filter(e=>inC(e[0])||inC(e[1]))}
+ const nodes=[...new Set(links.flatMap(e=>[e[0],e[1]]))];
+ const W=narrow?Math.max(cw,520):Math.max(cw,980),H=narrow?Math.round(nodes.length*24+260):Math.max(560,Math.round(nodes.length*15+220));
+ const P=layout(nodes,links,W,H,narrow);
+ const adj={};links.forEach(([a,b])=>{(adj[a]??=new Set).add(b);(adj[b]??=new Set).add(a)});
+ const edgeSvg=links.map(([a,b,t])=>`<line class="edge" data-a="${a}" data-b="${b}" x1="${P[a].x}" y1="${P[a].y}" x2="${P[b].x}" y2="${P[b].y}" stroke="var(--${t})" ${t==="foe"?'stroke-dasharray="6 4"':""}/>`).join("");
+ const nodeSvg=nodes.map(id=>{const p=P[id],c=C[id],label=short(id);const w=Math.max(54,label.length*7.4+26);
+  return`<g class="node ${c?.status==="dead"?"dead":""}" data-id="${id}" tabindex="0" role="button" aria-label="${esc(nm(id))}" transform="translate(${p.x-w/2},${p.y-14})"><rect width="${w}" height="28" rx="14" style="stroke:var(--${c?.align==="bad"?"foe":c?.align==="grey"?"fam":"line"})"/><circle cx="12" cy="14" r="4.5" style="fill:${COURTCOL[c?.court]||COURTCOL.other};stroke:none"/><text x="${w/2+6}" y="18.5" text-anchor="middle" style="font-size:13px;font-weight:700">${c?.status==="dead"?"† ":""}${esc(label)}</text></g>`}).join("");
+ $("#mstage").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Character connections">${edgeSvg}${nodeSvg}</svg>`;
+ const panel=$("#mpanel");
+ function focus(id){mapFocus=id;$("#mpick").value=C[id]?id:"";
+  const svg=$("#mstage svg");svg.querySelectorAll(".node").forEach(g=>{const k=g.dataset.id;g.classList.toggle("focus",k===id);g.classList.toggle("near",!!id&&!!adj[id]?.has(k));g.classList.toggle("dim",!!id&&k!==id&&!adj[id]?.has(k))});
+  svg.querySelectorAll(".edge").forEach(e=>e.classList.toggle("dim",!!id&&e.dataset.a!==id&&e.dataset.b!==id));
+  panel.classList.toggle("idle",!id);
+  if(!id){panel.innerHTML=`<p class="eyebrow">No one selected</p><p style="margin:6px 0 0;color:var(--muted)">Tap a name on the map, or choose one above.</p>`;return}
+  const rows=links.filter(e=>e[0]===id||e[1]===id).map(([a,b,t,l,bk])=>{const o=a===id?b:a;return`<li><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--${t});margin-right:8px"></i><button class="lnk" data-mf="${o}">${esc(nm(o))}</button> <span style="color:var(--muted)">· ${sp(hideField(bi(bk)),"e-"+a+b,esc(l))}</span></li>`});
+  const c=C[id];
+  panel.innerHTML=`<button class="sheet-close" data-close>Close</button><p class="eyebrow">Focused</p><h3>${esc(nm(id))}</h3>${c?`<div class="pills" style="justify-content:flex-start;margin-top:6px">${alignPill(c.align)}${statusPill(c.status)}</div>`:""}<ul>${rows.join("")}</ul><p style="margin-top:12px">${c?`<button class="lnk" data-go="char:${id}">Full profile</button>${FAMILIES.some(fm=>fm.gens.flat().includes(id))?` · <button class="lnk" data-go="fam:${id}">Family tree</button>`:""}`:""}</p>`}
+ const center=id=>$(`#mstage .node[data-id="${id}"]`)?.scrollIntoView({block:"center",inline:"center",behavior:"smooth"});
+ $("#mstage").addEventListener("click",e=>{const g=e.target.closest(".node");focus(g&&g.dataset.id!==mapFocus?g.dataset.id:null)});
+ $("#mstage").addEventListener("keydown",e=>{const g=e.target.closest(".node");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();focus(g.dataset.id===mapFocus?null:g.dataset.id)}});
+ panel.addEventListener("click",e=>{if(e.target.closest("[data-close]"))return focus(null);const b=e.target.closest("[data-mf]");if(b){focus(b.dataset.mf);center(b.dataset.mf)}});
+ $("#mpick").addEventListener("change",e=>{const id=e.target.value;if(id&&!P[id]){mapState.court="all";mapFocus=id;return renderMap()}focus(id||null);if(id)center(id)});
+ $("#mcourt").addEventListener("change",e=>{mapState.court=e.target.value;renderMap()});
+ const start=mapFocus&&P[mapFocus]?mapFocus:(narrow?null:(P.feyre?"feyre":null));
+ focus(start);if(start)requestAnimationFrame(()=>center(start));
+ coverStage("cover-map","map");
+}
+
+/* ============ GLOBAL SEARCH ============ */
+const INDEX=[
+ ...BOOKLIST.map(b=>({f:bi(b.c),k:"Book",t:b.title,s:`${b.abbr} · ${b.year}`,hay:[b.title,b.abbr,b.plot,b.pov].join(" "),go:"book:"+b.c})),
+ ...BOOKLIST.map(b=>({f:bi(b.c),hf:bi(b.c),k:"Recap",t:b.abbr+" recap",s:"Full-spoiler summary",hay:[b.abbr,b.title,"recap summary",RECAPS[b.c].start,RECAPS[b.c].events.join(" "),RECAPS[b.c].end].join(" "),go:"recap:"+b.c})),
+ ...CHARS.map(c=>({f:firstBook(c.books),hf:Math.max(c.akaB?bi(c.akaB):-1,later(c.aka)),k:"Character",t:c.name,s:`${courtName(c.court)} · ${c.aka}`,hay:[c.name,c.aka,c.type,c.feat,c.love,c.agenda,c.death,courtName(c.court)].join(" "),go:"char:"+c.id})),
+ ...COURTS.map(ct=>({f:bi(ct.b),k:"Court",t:ct.name,s:ct.seat,hay:[ct.name,ct.kind,ct.seat,ct.feat,ct.pos.map(p=>p[0]).join(" ")].join(" "),go:"court:"+ct.id})),
+ ...ERAS.map(e=>({f:bi(e.b),k:"Era",t:e.t,s:e.when,hay:[e.t,e.when,e.d].join(" "),go:"world:"+e.id})),
+ ...TIMELINE.map((x,i)=>({f:bi(x[3]),hf:bi(x[3]),k:"Timeline",t:x[1],s:x[0],hay:x.slice(0,3).join(" "),go:"world:tl-"+i})),
+ ...PLACES.map(p=>({f:Math.max(1,bi(p.b)),k:"Velaris",t:p.name,s:"Place in Velaris",hay:[p.name,p.d,"Velaris"].join(" "),go:"world:"+p.id}))
+];
+const gq=$("#gq"),gres=$("#gres");let gi=-1;
+function gsearch(){const q=gq.value.trim().toLowerCase();gi=-1;if(q.length<2){gres.hidden=true;return}
+ const terms=q.split(/\s+/);
+ const hits=INDEX.map(x=>{const h=x.hay.toLowerCase(),t=x.t.toLowerCase();if(!terms.every(w=>h.includes(w)))return null;return{...x,score:(t.startsWith(q)?3:0)+(t.includes(q)?2:0)+(x.k==="Character"?.5:0)}}).filter(Boolean).sort((a,b)=>b.score-a.score).slice(0,14);
+ gres.innerHTML=hits.length?hits.map(h=>{const hid=hideItem(h.f||0),shid=hid||hideField(h.hf??-1);return hid?`<button data-gg="${h.go}"><span class="k">Spoiler</span><span><b>Hidden spoiler</b><br><span class="s">From a book you haven't reached</span></span></button>`:`<button data-gg="${h.go}"><span class="k">${h.k}</span><span><b>${esc(h.t)}</b><br><span class="s" style="${shid?"filter:blur(5px)":""}">${esc(h.s)}</span></span></button>`}).join(""):`<div style="padding:12px;color:var(--muted)">Nothing found for “${esc(gq.value)}”.</div>`;
+ gres.hidden=false}
+gq.addEventListener("input",gsearch);gq.addEventListener("focus",gsearch);
+gq.addEventListener("keydown",e=>{const bs=[...gres.querySelectorAll("button")];if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!bs.length)return;gi=(gi+(e.key==="ArrowDown"?1:-1)+bs.length)%bs.length;bs[gi]?.focus()}else if(e.key==="Enter"&&bs[0]){bs[0].click()}else if(e.key==="Escape"){gres.hidden=true}});
+gres.addEventListener("keydown",e=>{const bs=[...gres.querySelectorAll("button")];const i=bs.indexOf(document.activeElement);if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();bs[(i+(e.key==="ArrowDown"?1:-1)+bs.length)%bs.length]?.focus()}else if(e.key==="Escape"){gres.hidden=true;gq.focus()}});
+gres.addEventListener("click",e=>{const b=e.target.closest("[data-gg]");if(b){gres.hidden=true;gq.blur();go(b.dataset.gg)}});
+document.addEventListener("click",e=>{if(!e.target.closest(".gsearch"))gres.hidden=true});
+
+const totop=$("#totop");
+const syncTop=()=>{totop.hidden=scrollY<500};
+addEventListener("scroll",syncTop,{passive:true});syncTop();
+totop.addEventListener("click",()=>{scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});gq.blur()});
+
+spStrip();renderTabs();show(current);
+if(spLevel===null)openSp();
+</script>
+</body>
+</html>
